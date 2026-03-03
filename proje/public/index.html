@@ -1,33 +1,2524 @@
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/*.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, DELETE, OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
-      ]
-    }
-  ]
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>ARYA — Haute Couture & Kuru Temizleme</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════
+   ROOT DESIGN TOKENS
+════════════════════════════════════════════ */
+:root {
+  --bg-void:    #070709;
+  --bg-deep:    #0d0d10;
+  --bg-card:    #111115;
+  --bg-glass:   rgba(255,255,255,0.035);
+  --bg-glass2:  rgba(255,255,255,0.06);
+  --bg-input:   rgba(255,255,255,0.04);
+
+  --gold:       #c8a96e;
+  --gold-light: #e2c98a;
+  --gold-glow:  rgba(200,169,110,0.25);
+  --gold-faint: rgba(200,169,110,0.08);
+
+  --text-primary:  #f2ede6;
+  --text-secondary: #9a9285;
+  --text-muted:    #5a544e;
+
+  --border:     rgba(200,169,110,0.18);
+  --border-sub: rgba(255,255,255,0.06);
+  --border-inp: rgba(255,255,255,0.09);
+
+  --red:   #e05252;
+  --green: #52c87a;
+  --wa:    #25D366;
+
+  --radius-sm:  10px;
+  --radius-md:  18px;
+  --radius-lg:  28px;
+  --radius-xl:  40px;
+
+  --shadow-card: 0 32px 64px rgba(0,0,0,0.7), 0 1px 0 rgba(255,255,255,0.04) inset;
+  --shadow-gold: 0 8px 32px rgba(200,169,110,0.3);
+  --transition:  0.22s cubic-bezier(0.4,0,0.2,1);
 }
+
+/* ════════════════════════════════════════════
+   RESET & BASE
+════════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'DM Sans',sans-serif;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection { background:var(--gold-glow); color:var(--gold-light); }
+::-webkit-scrollbar { width:4px; height:4px; }
+::-webkit-scrollbar-track { background:var(--bg-deep); }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:99px; }
+img { display:block; width:100%; }
+
+/* ════════════════════════════════════════════
+   GLOBAL COMPONENTS
+════════════════════════════════════════════ */
+
+/* Grain overlay */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:9999;
+  opacity:0.5;
+}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 28px;
+  border-radius:var(--radius-xl);
+  border:none;
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  transition:var(--transition);
+  text-decoration:none;
+  white-space:nowrap;
+  position:relative;
+  overflow:hidden;
+}
+.btn::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0);
+  transition:var(--transition);
+}
+.btn:hover::after { background:rgba(255,255,255,0.06); }
+.btn:active { transform:scale(0.97); }
+
+.btn-gold {
+  background:linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color:#0d0b07;
+  font-weight:600;
+  box-shadow: var(--shadow-gold);
+  letter-spacing:0.02em;
+}
+.btn-gold:hover { box-shadow:0 12px 40px rgba(200,169,110,0.45); transform:translateY(-1px); }
+
+.btn-ghost {
+  background:var(--bg-glass);
+  border:1px solid var(--border-sub);
+  color:var(--text-secondary);
+  backdrop-filter:blur(8px);
+}
+.btn-ghost:hover { border-color:var(--border); color:var(--text-primary); }
+
+.btn-sm { padding:7px 16px; font-size:12px; border-radius:30px; }
+.btn-icon { padding:9px; border-radius:50%; width:36px; height:36px; }
+
+.finput {
+  width:100%;
+  background:var(--bg-input);
+  border:1px solid var(--border-inp);
+  border-radius:var(--radius-sm);
+  padding:13px 16px;
+  color:var(--text-primary);
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  transition:var(--transition);
+  outline:none;
+}
+.finput:focus {
+  border-color:var(--gold);
+  background:rgba(200,169,110,0.05);
+  box-shadow:0 0 0 3px var(--gold-faint);
+}
+.finput::placeholder { color:var(--text-muted); }
+
+/* Gold rule */
+.gold-rule {
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+  border:none;
+  margin:0;
+}
+
+/* Section label */
+.section-label {
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.section-label::after {
+  content:'';
+  flex:1;
+  height:1px;
+  background:var(--border-sub);
+}
+
+/* ════════════════════════════════════════════
+   TAB SWITCHER
+════════════════════════════════════════════ */
+#tab-switcher {
+  position:fixed;
+  top:16px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:1000;
+  background:rgba(13,13,16,0.85);
+  backdrop-filter:blur(20px) saturate(1.5);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  padding:5px;
+  display:flex;
+  gap:4px;
+  box-shadow:0 16px 48px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.06) inset;
+}
+.sw-btn {
+  padding:8px 20px;
+  border:none;
+  border-radius:30px;
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  background:transparent;
+  color:var(--text-muted);
+  cursor:pointer;
+  transition:var(--transition);
+  display:flex;
+  align-items:center;
+  gap:7px;
+  letter-spacing:0.01em;
+}
+.sw-btn.active {
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#0d0b07;
+  font-weight:600;
+  box-shadow:var(--shadow-gold);
+}
+.sw-btn svg { width:14px;height:14px; flex-shrink:0; }
+
+/* ════════════════════════════════════════════
+   SCREENS
+════════════════════════════════════════════ */
+.screen { display:none; min-height:100vh; flex-direction:column; }
+.screen.active { display:flex; }
+
+/* ════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════ */
+.hero {
+  position:relative;
+  height:clamp(260px, 38vh, 380px);
+  overflow:hidden;
+  flex-shrink:0;
+}
+#hero-canvas {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.28) saturate(0.6);
+  transition:opacity 1.2s ease;
+}
+.hero-gradient {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(7,7,9,0.05) 0%,
+    rgba(7,7,9,0.3) 50%,
+    var(--bg-void) 100%
+  );
+}
+.hero-content {
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:0 20px;
+  text-align:center;
+}
+.brand-mark {
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:5px;
+  color:rgba(200,169,110,0.5);
+  text-transform:uppercase;
+  margin-bottom:12px;
+  animation: fadeUp 0.8s ease both;
+}
+.brand-name {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(64px, 12vw, 96px);
+  font-weight:300;
+  letter-spacing:clamp(14px, 3vw, 24px);
+  color:var(--text-primary);
+  line-height:1;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+.brand-name em {
+  font-style:normal;
+  color:var(--gold);
+  font-weight:400;
+}
+.brand-tagline {
+  margin-top:10px;
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:4px;
+  color:rgba(240,233,221,0.25);
+  text-transform:uppercase;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-service-badge {
+  margin-top:20px;
+  background:rgba(200,169,110,0.1);
+  border:1px solid rgba(200,169,110,0.2);
+  border-radius:30px;
+  padding:6px 16px;
+  font-size:11px;
+  color:var(--gold);
+  letter-spacing:1px;
+  animation: fadeUp 0.8s 0.3s ease both;
+  backdrop-filter:blur(8px);
+  transition:var(--transition);
+  opacity:0.8;
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(14px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ════════════════════════════════════════════
+   BOOKING WRAPPER
+════════════════════════════════════════════ */
+.booking-wrap {
+  flex:1;
+  max-width:1100px;
+  width:100%;
+  margin:0 auto;
+  padding:0 16px 60px;
+}
+
+/* ════════════════════════════════════════════
+   BOOKING CARD
+════════════════════════════════════════════ */
+.booking-card {
+  background:var(--bg-card);
+  border:1px solid var(--border-sub);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);
+  overflow:hidden;
+  position:relative;
+}
+.booking-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+}
+
+/* Card Header */
+.card-header {
+  padding:20px 24px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:rgba(255,255,255,0.015);
+  border-bottom:1px solid var(--border-sub);
+}
+.card-title-wrap { display:flex; align-items:center; gap:10px; }
+.card-title {
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  font-weight:400;
+  color:var(--text-primary);
+}
+
+/* Steps Progress */
+.step-track {
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+.step-dot-wrap {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  cursor:pointer;
+  padding:0 2px;
+}
+.step-dot {
+  width:28px; height:28px;
+  border-radius:50%;
+  background:var(--bg-glass);
+  border:1px solid var(--border-sub);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:600;
+  color:var(--text-muted);
+  transition:var(--transition);
+  position:relative;
+}
+.step-dot.active {
+  background:var(--gold-faint);
+  border-color:var(--gold);
+  color:var(--gold);
+  box-shadow:0 0 12px var(--gold-glow);
+}
+.step-dot.done {
+  background:var(--gold);
+  border-color:var(--gold);
+  color:#0d0b07;
+}
+.step-dot-label {
+  font-size:9px;
+  color:var(--text-muted);
+  letter-spacing:0.5px;
+  white-space:nowrap;
+}
+.step-dot.active + .step-dot-label,
+.step-dot-wrap.active .step-dot-label { color:var(--gold); }
+.step-connector {
+  width:24px; height:1px;
+  background:var(--border-sub);
+  margin-bottom:14px;
+}
+.step-connector.done { background:var(--gold); opacity:0.4; }
+@media(max-width:480px) {
+  .step-dot-label { display:none; }
+  .step-connector { width:14px; }
+}
+
+/* Payment Notice */
+.payment-banner {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 24px;
+  background:rgba(200,169,110,0.06);
+  border-bottom:1px solid rgba(200,169,110,0.1);
+  font-size:12.5px;
+  color:var(--text-secondary);
+}
+.payment-banner svg { color:var(--gold); flex-shrink:0; width:16px; height:16px; }
+.payment-banner strong { color:var(--gold); font-weight:500; }
+
+/* ════════════════════════════════════════════
+   STEP CONTENT
+════════════════════════════════════════════ */
+.step-panel { display:none; padding:24px; animation:slideIn 0.25s ease; }
+.step-panel.active { display:block; }
+@keyframes slideIn {
+  from { opacity:0; transform:translateY(6px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ════════════════════════════════════════════
+   STEP 1 — SERVICES
+════════════════════════════════════════════ */
+.service-grid {
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:12px;
+  margin-top:18px;
+}
+@media(min-width:560px) { .service-grid { grid-template-columns:repeat(3, 1fr); } }
+@media(min-width:900px) { .service-grid { grid-template-columns:repeat(3, 1fr); } }
+
+.service-card {
+  background:var(--bg-deep);
+  border:1px solid var(--border-sub);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  cursor:pointer;
+  transition:var(--transition);
+  position:relative;
+  user-select:none;
+}
+.service-card:hover { border-color:rgba(200,169,110,0.3); transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,0.5); }
+.service-card.selected {
+  border-color:var(--gold);
+  box-shadow:0 0 0 1px var(--gold), 0 12px 32px rgba(200,169,110,0.15);
+}
+
+.service-img-wrap {
+  position:relative;
+  height:110px;
+  overflow:hidden;
+}
+.service-img-wrap img {
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.5s ease;
+  filter:brightness(0.7) saturate(0.7);
+}
+.service-card:hover .service-img-wrap img { transform:scale(1.05); }
+.service-card.selected .service-img-wrap img { filter:brightness(0.65) saturate(0.6); }
+
+.service-check {
+  position:absolute;
+  top:8px; right:8px;
+  width:22px; height:22px;
+  background:var(--gold);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transform:scale(0.5);
+  transition:var(--transition);
+}
+.service-card.selected .service-check { opacity:1; transform:scale(1); }
+
+.service-body { padding:12px; }
+.service-name { font-size:14px; font-weight:500; line-height:1.3; }
+.service-meta {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:7px;
+}
+.service-duration { font-size:11px; color:var(--text-muted); display:flex; align-items:center; gap:4px; }
+.service-price { font-size:15px; font-weight:600; color:var(--gold); }
+
+.service-add-btn {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  margin-top:10px;
+  padding:6px;
+  border-radius:30px;
+  border:1px solid var(--border-sub);
+  background:transparent;
+  color:var(--text-muted);
+  font-size:11px;
+  font-weight:500;
+  cursor:pointer;
+  transition:var(--transition);
+  width:100%;
+  font-family:'DM Sans',sans-serif;
+}
+.service-card.selected .service-add-btn {
+  background:var(--gold);
+  color:#0d0b07;
+  border-color:var(--gold);
+  font-weight:600;
+}
+.service-add-btn:hover { opacity:0.85; }
+
+/* Selected chips */
+.selected-summary {
+  margin-top:20px;
+  padding:14px 16px;
+  background:var(--gold-faint);
+  border:1px solid rgba(200,169,110,0.15);
+  border-radius:var(--radius-md);
+  display:none;
+}
+.selected-summary.visible { display:block; }
+.selected-chips { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+.chip {
+  padding:4px 13px;
+  background:rgba(200,169,110,0.1);
+  border:1px solid rgba(200,169,110,0.25);
+  border-radius:30px;
+  font-size:11px;
+  color:var(--gold);
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.chip-remove {
+  cursor:pointer;
+  opacity:0.6;
+  transition:var(--transition);
+  line-height:1;
+}
+.chip-remove:hover { opacity:1; }
+
+/* ════════════════════════════════════════════
+   STEP 2 — DATE & TIME
+════════════════════════════════════════════ */
+.calendar-layout {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+  margin-top:16px;
+}
+@media(min-width:600px) { .calendar-layout { grid-template-columns:1fr 1fr; } }
+
+.cal-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:16px;
+}
+.cal-month-name {
+  font-family:'Playfair Display',serif;
+  font-size:16px;
+  font-weight:400;
+}
+.cal-nav-btn {
+  width:32px; height:32px;
+  border-radius:50%;
+  border:1px solid var(--border-sub);
+  background:var(--bg-glass);
+  color:var(--text-secondary);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:var(--transition);
+}
+.cal-nav-btn:hover { border-color:var(--border); color:var(--text-primary); }
+
+.day-labels {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:3px;
+  margin-bottom:4px;
+}
+.day-label {
+  text-align:center;
+  font-size:10px;
+  font-family:'DM Mono',monospace;
+  color:var(--text-muted);
+  padding:4px 0;
+  letter-spacing:0.5px;
+}
+
+.days-grid {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:3px;
+}
+.cal-day {
+  aspect-ratio:1;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  cursor:pointer;
+  background:var(--bg-glass);
+  transition:var(--transition);
+  position:relative;
+}
+.cal-day:hover:not(.empty):not(.disabled):not(.selected) { background:var(--bg-glass2); }
+.cal-day.empty { background:transparent; pointer-events:none; }
+.cal-day.disabled { opacity:0.2; pointer-events:none; }
+.cal-day.today::after {
+  content:'';
+  position:absolute;
+  bottom:3px;
+  width:4px; height:4px;
+  border-radius:50%;
+  background:var(--gold);
+}
+.cal-day.selected {
+  background:var(--gold);
+  color:#0d0b07;
+  font-weight:700;
+  box-shadow:0 4px 16px var(--gold-glow);
+}
+
+.time-section-label {
+  font-family:'Playfair Display',serif;
+  font-size:16px;
+  font-weight:400;
+  margin-bottom:14px;
+}
+.time-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+@media(min-width:600px) { .time-grid { grid-template-columns:repeat(2,1fr); } }
+.time-slot {
+  padding:11px 8px;
+  background:var(--bg-glass);
+  border:1px solid var(--border-sub);
+  border-radius:var(--radius-sm);
+  text-align:center;
+  font-size:13px;
+  font-family:'DM Mono',monospace;
+  cursor:pointer;
+  transition:var(--transition);
+  color:var(--text-secondary);
+}
+.time-slot:hover { border-color:var(--border); color:var(--text-primary); }
+.time-slot.selected {
+  background:rgba(200,169,110,0.12);
+  border-color:var(--gold);
+  color:var(--gold);
+  font-weight:500;
+  box-shadow:0 0 16px var(--gold-faint);
+}
+
+/* ════════════════════════════════════════════
+   STEP 3 — CUSTOMER INFO
+════════════════════════════════════════════ */
+.info-layout {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+  margin-top:16px;
+}
+@media(min-width:640px) { .info-layout { grid-template-columns:1fr 1fr; } }
+
+.form-group { display:flex; flex-direction:column; gap:6px; }
+.form-label { font-size:11px; color:var(--text-muted); letter-spacing:0.5px; text-transform:uppercase; font-family:'DM Mono',monospace; }
+
+.order-summary {
+  background:var(--bg-deep);
+  border:1px solid var(--border-sub);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+.order-summary-head {
+  padding:14px 16px;
+  background:rgba(255,255,255,0.02);
+  border-bottom:1px solid var(--border-sub);
+  font-size:12px;
+  color:var(--text-muted);
+  letter-spacing:1px;
+  text-transform:uppercase;
+  font-family:'DM Mono',monospace;
+}
+.order-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 16px;
+  border-bottom:1px solid var(--border-sub);
+  font-size:13px;
+}
+.order-row:last-child { border-bottom:none; }
+.order-row-label { color:var(--text-secondary); display:flex; align-items:center; gap:7px; }
+.order-row-value { color:var(--text-primary); text-align:right; font-size:12px; max-width:55%; }
+.order-total {
+  padding:14px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid var(--border);
+  background:var(--gold-faint);
+}
+.order-total-label { font-size:13px; color:var(--text-secondary); }
+.order-total-value { font-size:22px; font-weight:600; color:var(--gold); font-family:'Playfair Display',serif; }
+
+.payment-info-box {
+  margin-top:12px;
+  padding:12px 14px;
+  background:rgba(200,169,110,0.05);
+  border:1px solid rgba(200,169,110,0.12);
+  border-radius:var(--radius-sm);
+  font-size:12px;
+  color:var(--text-muted);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* ════════════════════════════════════════════
+   STEP SUCCESS
+════════════════════════════════════════════ */
+.success-panel {
+  text-align:center;
+  padding:40px 20px;
+}
+.success-icon {
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:rgba(200,169,110,0.1);
+  border:1px solid rgba(200,169,110,0.3);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 24px;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 var(--gold-glow); }
+  50%      { box-shadow: 0 0 0 16px transparent; }
+}
+.success-title {
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  font-weight:300;
+  margin-bottom:8px;
+}
+.success-sub { color:var(--text-secondary); font-size:14px; margin-bottom:28px; }
+
+.booking-number-card {
+  background:var(--bg-deep);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:24px;
+  margin:0 auto 24px;
+  max-width:320px;
+}
+.booking-number-label {
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--text-muted);
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.booking-number {
+  font-family:'DM Mono',monospace;
+  font-size:36px;
+  font-weight:300;
+  color:var(--gold);
+  letter-spacing:4px;
+}
+
+/* ════════════════════════════════════════════
+   CARD FOOTER
+════════════════════════════════════════════ */
+.card-footer {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  padding:16px 24px;
+  border-top:1px solid var(--border-sub);
+  background:rgba(255,255,255,0.01);
+}
+
+/* ════════════════════════════════════════════
+   TOAST
+════════════════════════════════════════════ */
+#toast {
+  position:fixed;
+  bottom:24px; right:24px;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  padding:12px 20px;
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  box-shadow:0 16px 40px rgba(0,0,0,0.7);
+  transform:translateY(100px);
+  opacity:0;
+  transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s;
+  z-index:99999;
+  max-width:300px;
+}
+#toast.visible { transform:translateY(0); opacity:1; }
+#toast.success { border-color:var(--gold); color:var(--gold); }
+#toast.error   { border-color:var(--red);  color:var(--red); }
+
+/* ════════════════════════════════════════════
+   MODALS
+════════════════════════════════════════════ */
+.modal-overlay {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.82);
+  backdrop-filter:blur(12px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.2s;
+  padding:16px;
+}
+.modal-overlay.open {
+  opacity:1;
+  pointer-events:all;
+}
+.modal-box {
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:28px;
+  width:100%;
+  max-width:420px;
+  position:relative;
+  transform:scale(0.95) translateY(10px);
+  transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow:var(--shadow-card);
+}
+.modal-overlay.open .modal-box { transform:scale(1) translateY(0); }
+.modal-box::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+}
+.modal-title {
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  font-weight:400;
+  margin-bottom:6px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.modal-sub { color:var(--text-secondary); font-size:13px; margin-bottom:22px; }
+.modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:20px; }
+.error-inline { font-size:12px; color:var(--red); margin-bottom:12px; display:none; }
+
+/* ════════════════════════════════════════════
+   ADMIN SCREEN
+════════════════════════════════════════════ */
+#admin-screen { flex-direction:column; }
+
+/* Admin top bar */
+.admin-topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:24px;
+}
+.admin-page-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,4vw,32px);
+  font-weight:300;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Admin nav */
+.admin-nav {
+  display:flex;
+  overflow-x:auto;
+  gap:4px;
+  padding:10px 16px;
+  background:rgba(13,13,16,0.9);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border-sub);
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  flex-shrink:0;
+}
+.admin-nav::-webkit-scrollbar { display:none; }
+.admin-nav-item {
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 16px;
+  border-radius:30px;
+  color:var(--text-muted);
+  cursor:pointer;
+  transition:var(--transition);
+  font-size:13px;
+  font-weight:500;
+  white-space:nowrap;
+  border:1px solid transparent;
+}
+.admin-nav-item:hover { color:var(--text-primary); }
+.admin-nav-item.active {
+  background:var(--gold-faint);
+  border-color:rgba(200,169,110,0.2);
+  color:var(--gold);
+}
+.admin-nav-item svg { width:15px; height:15px; flex-shrink:0; }
+
+/* Admin content */
+.admin-content { flex:1; padding:20px 16px 60px; overflow-x:hidden; }
+
+/* Stats row */
+.stats-row {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:24px;
+}
+@media(min-width:600px) { .stats-row { grid-template-columns:repeat(4,1fr); } }
+
+.stat-card {
+  background:var(--bg-card);
+  border:1px solid var(--border-sub);
+  border-radius:var(--radius-md);
+  padding:16px;
+  position:relative;
+  overflow:hidden;
+}
+.stat-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+}
+.stat-label {
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  font-family:'DM Mono',monospace;
+  margin-bottom:8px;
+}
+.stat-value {
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  font-weight:300;
+  color:var(--gold);
+  line-height:1;
+}
+.stat-icon {
+  position:absolute;
+  bottom:12px; right:14px;
+  width:24px; height:24px;
+  color:var(--border);
+}
+
+/* Data table */
+.data-table-wrap {
+  background:var(--bg-card);
+  border:1px solid var(--border-sub);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+.data-table-head {
+  display:grid;
+  padding:12px 20px;
+  background:rgba(255,255,255,0.02);
+  border-bottom:1px solid var(--border-sub);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  font-family:'DM Mono',monospace;
+}
+.data-table-row {
+  display:grid;
+  padding:14px 20px;
+  border-bottom:1px solid var(--border-sub);
+  align-items:center;
+  font-size:13px;
+  transition:var(--transition);
+}
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--bg-glass); }
+
+.tbl-randevu { grid-template-columns: 1.5fr 1.5fr 1.2fr 1fr 1fr; }
+.tbl-musteri { grid-template-columns: 1.5fr 1.2fr 1.2fr 1fr 40px; }
+
+@media(max-width:700px) {
+  .tbl-randevu { grid-template-columns:1fr 1fr 1fr; }
+  .tbl-randevu .col-hide { display:none; }
+  .tbl-musteri { grid-template-columns:1fr 1fr 40px; }
+  .tbl-musteri .col-hide { display:none; }
+}
+
+.badge {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:3px 10px;
+  border-radius:30px;
+  font-size:11px;
+  font-weight:500;
+}
+.badge-success { background:rgba(82,200,122,0.1); color:var(--green); border:1px solid rgba(82,200,122,0.2); }
+.badge-pending { background:rgba(224,82,82,0.1); color:var(--red); border:1px solid rgba(224,82,82,0.2); }
+
+.action-btn {
+  width:30px; height:30px;
+  border-radius:50%;
+  border:1px solid var(--border-sub);
+  background:var(--bg-glass);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:var(--transition);
+  color:var(--text-muted);
+  margin-right:4px;
+}
+.action-btn:hover { border-color:var(--border); color:var(--text-primary); }
+.action-btn.wa:hover { border-color:var(--wa); color:var(--wa); }
+.action-btn.danger:hover { border-color:var(--red); color:var(--red); }
+.action-btn svg { width:13px; height:13px; }
+
+/* Hizmetler grid admin */
+.hizmet-admin-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+@media(min-width:600px) { .hizmet-admin-grid { grid-template-columns:repeat(3,1fr); } }
+
+.hizmet-admin-card {
+  background:var(--bg-card);
+  border:1px solid var(--border-sub);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  transition:var(--transition);
+}
+.hizmet-admin-card:hover { border-color:var(--border); }
+.hizmet-admin-img { height:90px; object-fit:cover; filter:brightness(0.6); transition:filter 0.3s; }
+.hizmet-admin-card:hover .hizmet-admin-img { filter:brightness(0.75); }
+.hizmet-admin-body { padding:12px; }
+.hizmet-admin-name { font-size:14px; font-weight:500; margin-bottom:6px; }
+.hizmet-admin-meta { display:flex; justify-content:space-between; align-items:center; font-size:12px; }
+.hizmet-admin-meta span:first-child { color:var(--text-muted); }
+.hizmet-admin-price { color:var(--gold); font-weight:600; }
+.hizmet-admin-actions { display:flex; gap:6px; margin-top:10px; }
+
+/* Search input */
+.search-wrap { position:relative; }
+.search-wrap svg { position:absolute; left:12px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--text-muted); }
+.search-input {
+  width:100%;
+  max-width:240px;
+  padding:9px 12px 9px 36px;
+  background:var(--bg-input);
+  border:1px solid var(--border-inp);
+  border-radius:30px;
+  color:var(--text-primary);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;
+  transition:var(--transition);
+  outline:none;
+}
+.search-input:focus { border-color:var(--gold); box-shadow:0 0 0 3px var(--gold-faint); }
+.search-input::placeholder { color:var(--text-muted); }
+
+/* Pagination */
+.pagination {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:20px;
+}
+.page-btn {
+  width:34px; height:34px;
+  border-radius:8px;
+  border:1px solid var(--border-sub);
+  background:var(--bg-glass);
+  color:var(--text-secondary);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:var(--transition);
+  font-size:13px;
+}
+.page-btn:hover:not(:disabled) { border-color:var(--border); color:var(--text-primary); }
+.page-btn:disabled { opacity:0.3; cursor:default; }
+.page-info { font-size:12px; color:var(--text-muted); padding:0 4px; font-family:'DM Mono',monospace; }
+
+/* File upload */
+.file-drop {
+  border:1px dashed var(--border-inp);
+  border-radius:var(--radius-sm);
+  padding:20px;
+  text-align:center;
+  cursor:pointer;
+  transition:var(--transition);
+  color:var(--text-muted);
+  font-size:13px;
+}
+.file-drop:hover { border-color:var(--gold); background:var(--gold-faint); }
+.file-drop svg { width:24px; height:24px; margin:0 auto 8px; color:var(--text-muted); }
+.preview-img {
+  width:100%;
+  max-height:120px;
+  object-fit:cover;
+  border-radius:var(--radius-sm);
+  margin-top:10px;
+  display:none;
+}
+
+/* Ayarlar */
+.settings-card {
+  background:var(--bg-card);
+  border:1px solid var(--border-sub);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  margin-bottom:16px;
+}
+.settings-head {
+  padding:14px 20px;
+  border-bottom:1px solid var(--border-sub);
+  font-size:12px;
+  font-family:'DM Mono',monospace;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.settings-body { padding:20px; }
+.settings-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px solid var(--border-sub);
+  gap:16px;
+}
+.settings-row:last-child { border-bottom:none; }
+.settings-row-label { font-size:13px; color:var(--text-secondary); }
+.settings-row-value { font-size:13px; color:var(--text-primary); font-family:'DM Mono',monospace; }
+
+/* ════════════════════════════════════════════
+   INLINE SVGS — Icons
+════════════════════════════════════════════ */
+.ico { display:inline-block; vertical-align:middle; }
+
+/* Responsive tweaks */
+@media(max-width:480px) {
+  .booking-wrap { padding:0 8px 60px; }
+  .step-panel { padding:16px; }
+  .card-header { padding:14px 16px; }
+  .card-footer { padding:12px 16px; }
+  .payment-banner { padding:10px 16px; }
+  .admin-content { padding:16px 12px 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Tab Switcher -->
+<div id="tab-switcher">
+  <button class="sw-btn active" data-tab="musteri" onclick="UI.switchTab('musteri',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4.5C14 3.1 12.9 2 11.5 2S9 3.1 9 4.5s1.1 2.5 2.5 2.5S14 5.9 14 4.5z"/><path d="M5 9c0-2 3-3 6.5-3S18 7 18 9l-1 8H8z"/></svg>
+    Randevu Al
+  </button>
+  <button class="sw-btn" data-tab="admin" onclick="UI.switchTab('admin',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    Yönetim
+  </button>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- ═══════════ MÜŞTERİ EKRANI ═══════════ -->
+<div id="musteri-screen" class="screen active">
+
+  <!-- Hero -->
+  <div class="hero">
+    <img id="hero-canvas" src="" alt="">
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="brand-mark">Bursa · Est. 2018</div>
+      <div class="brand-name">A<em>R</em>YA</div>
+      <div class="brand-tagline">Haute Couture & Kuru Temizleme</div>
+      <div class="hero-service-badge" id="hero-badge">✦ Premium Tekstil Bakımı</div>
+    </div>
+  </div>
+
+  <!-- Booking -->
+  <div class="booking-wrap">
+    <div class="booking-card">
+
+      <!-- Header -->
+      <div class="card-header">
+        <div class="card-title-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span class="card-title">Randevu Al</span>
+        </div>
+        <div class="step-track" id="step-track">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Payment Banner -->
+      <div class="payment-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span><strong>Ödeme bilgisi:</strong> Tüm ödemeler hizmet tesliminde nakit veya kart ile alınır. Ön ödeme talep edilmez.</span>
+      </div>
+
+      <!-- Step 1: Services -->
+      <div class="step-panel active" id="panel-1">
+        <div class="section-label">Hizmet Seçin</div>
+        <div class="service-grid" id="service-grid"></div>
+        <div class="selected-summary" id="selected-summary">
+          <div class="section-label" style="margin-bottom:8px;">Seçilenler</div>
+          <div class="selected-chips" id="selected-chips"></div>
+        </div>
+      </div>
+
+      <!-- Step 2: Date & Time -->
+      <div class="step-panel" id="panel-2">
+        <div class="section-label">Tarih & Saat Seçin</div>
+        <div class="calendar-layout">
+          <div>
+            <div class="cal-header">
+              <button class="cal-nav-btn" onclick="Cal.prevMonth()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <div class="cal-month-name" id="cal-month-name">—</div>
+              <button class="cal-nav-btn" onclick="Cal.nextMonth()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <div class="day-labels" id="day-labels"></div>
+            <div class="days-grid" id="days-grid"></div>
+          </div>
+          <div>
+            <div class="time-section-label">Müsait Saatler</div>
+            <div class="time-grid" id="time-grid"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Info -->
+      <div class="step-panel" id="panel-3">
+        <div class="section-label">Bilgileriniz</div>
+        <div class="info-layout">
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div class="form-group">
+              <label class="form-label">Ad Soyad *</label>
+              <input type="text" class="finput" id="f-name" placeholder="Adınızı ve soyadınızı girin">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Telefon *</label>
+              <input type="tel" class="finput" id="f-phone" placeholder="05xxxxxxxxx">
+            </div>
+            <div class="form-group">
+              <label class="form-label">E-posta <span style="color:var(--text-muted);font-size:10px;">(isteğe bağlı)</span></label>
+              <input type="email" class="finput" id="f-email" placeholder="ornek@mail.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Not <span style="color:var(--text-muted);font-size:10px;">(isteğe bağlı)</span></label>
+              <textarea class="finput" id="f-note" placeholder="Özel bir isteğiniz var mı?" rows="3" style="resize:none;"></textarea>
+            </div>
+          </div>
+          <div>
+            <div class="order-summary">
+              <div class="order-summary-head">Sipariş Özeti</div>
+              <div id="order-rows"></div>
+              <div class="order-total">
+                <span class="order-total-label">Toplam Tutar</span>
+                <span class="order-total-value" id="order-total">0 ₺</span>
+              </div>
+            </div>
+            <div class="payment-info-box">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Ödeme hizmet tesliminde elden alınır
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step Success -->
+      <div class="step-panel" id="panel-5">
+        <div class="success-panel">
+          <div class="success-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2 class="success-title">Randevunuz Oluşturuldu</h2>
+          <p class="success-sub">Ekibimiz en kısa sürede sizinle iletişime geçecek.</p>
+          <div class="booking-number-card">
+            <div class="booking-number-label">Randevu Numaranız</div>
+            <div class="booking-number" id="booking-number">ARY-0000</div>
+          </div>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:24px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--wa)" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Randevu detayları WhatsApp üzerinden gönderildi.
+          </p>
+          <button class="btn btn-gold" onclick="Booking.reset()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.13"/></svg>
+            Yeni Randevu
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer" id="booking-footer">
+        <button class="btn btn-ghost" id="btn-back" onclick="Booking.prevStep()" style="display:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Geri
+        </button>
+        <button class="btn btn-gold" id="btn-next" onclick="Booking.nextStep()">
+          Devam
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ ADMIN EKRANI ═══════════ -->
+<div id="admin-screen" class="screen">
+  <div class="admin-nav" id="admin-nav">
+    <div class="admin-nav-item active" data-page="dashboard" onclick="Admin.nav('dashboard',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Pano
+    </div>
+    <div class="admin-nav-item" data-page="randevular" onclick="Admin.nav('randevular',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Randevular
+    </div>
+    <div class="admin-nav-item" data-page="hizmetler" onclick="Admin.nav('hizmetler',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+      Hizmetler
+    </div>
+    <div class="admin-nav-item" data-page="musteriler" onclick="Admin.nav('musteriler',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Müşteriler
+    </div>
+    <div class="admin-nav-item" data-page="ayarlar" onclick="Admin.nav('ayarlar',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Ayarlar
+    </div>
+  </div>
+  <div class="admin-content" id="admin-content"></div>
+</div>
+
+<!-- ═══════════ MODALS ═══════════ -->
+
+<!-- Admin Login -->
+<div class="modal-overlay" id="modal-login">
+  <div class="modal-box" style="max-width:360px;text-align:center;">
+    <div style="margin:0 auto 20px;width:56px;height:56px;border-radius:50%;background:var(--gold-faint);border:1px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <div class="modal-title" style="justify-content:center;">Yönetici Girişi</div>
+    <p class="modal-sub">Devam etmek için şifrenizi girin</p>
+    <div class="form-group" style="text-align:left;margin-bottom:8px;">
+      <input type="password" class="finput" id="admin-pw" placeholder="Şifre" onkeydown="if(event.key==='Enter')Admin.loginCheck()">
+    </div>
+    <div class="error-inline" id="login-error">Hatalı şifre. Lütfen tekrar deneyin.</div>
+    <div class="modal-actions" style="justify-content:center;">
+      <button class="btn btn-ghost" onclick="Admin.loginCancel()">İptal</button>
+      <button class="btn btn-gold" onclick="Admin.loginCheck()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        Giriş
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Move Appointment -->
+<div class="modal-overlay" id="modal-move">
+  <div class="modal-box">
+    <div class="modal-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Randevu Taşı
+    </div>
+    <p class="modal-sub">Yeni tarih ve saat seçin</p>
+    <div class="form-group" style="margin-bottom:14px;">
+      <label class="form-label">Yeni Tarih</label>
+      <input type="date" class="finput" id="move-date">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Yeni Saat</label>
+      <select class="finput" id="move-time">
+        <option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option>
+        <option>11:00</option><option>11:30</option><option>13:00</option><option>13:30</option>
+        <option>14:00</option><option>14:30</option><option>15:00</option><option>15:30</option>
+        <option>16:00</option><option>16:30</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="Modals.close('modal-move')">İptal</button>
+      <button class="btn btn-gold" onclick="Admin.moveConfirm()">Taşı</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Service -->
+<div class="modal-overlay" id="modal-service">
+  <div class="modal-box">
+    <div class="modal-title" id="modal-service-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Yeni Hizmet
+    </div>
+    <p class="modal-sub">Hizmet bilgilerini doldurun</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="form-group"><label class="form-label">Hizmet Adı *</label><input type="text" class="finput" id="svc-name" placeholder="Hizmet adı"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group"><label class="form-label">Fiyat (₺) *</label><input type="number" class="finput" id="svc-price" placeholder="0"></div>
+        <div class="form-group"><label class="form-label">Süre *</label><input type="text" class="finput" id="svc-duration" placeholder="45 dk"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Görsel</label>
+        <div class="file-drop" onclick="document.getElementById('svc-file').click()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+          <div>Görsel yükle veya URL gir</div>
+        </div>
+        <input type="file" id="svc-file" accept="image/*" style="display:none;" onchange="Admin.handleImageUpload(event)">
+        <img id="svc-preview" class="preview-img" src="#" alt="">
+        <input type="text" class="finput" id="svc-img-url" placeholder="veya görsel URL'si" style="margin-top:8px;" oninput="Admin.handleImageUrl(this.value)">
+        <input type="hidden" id="svc-img-data">
+        <input type="hidden" id="svc-id">
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="Modals.close('modal-service')">İptal</button>
+      <button class="btn btn-gold" onclick="Admin.saveService()">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   ARYA — Terzi & Kuru Temizleme App
+   Architecture: IIFE modules, no global pollution
+   Version: 2.0 — Full rewrite (with fixes)
+════════════════════════════════════════════════════════════════ */
+(function() {
+'use strict';
+
+/* ─────────────────────────────────────────
+   SERVICE IMAGES — contextually matched to each service
+───────────────────────────────────────────*/
+const SERVICE_IMAGES = {
+  tailor: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80',
+  suit:   'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80',
+  clean:  'https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=600&q=80',
+  curtain:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80',
+  iron:   'https://images.unsplash.com/photo-1601924638867-3a6de6b7a500?w=600&q=80',
+  wash:   'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&q=80',
+};
+
+/* ─────────────────────────────────────────
+   STATE — Single source of truth
+───────────────────────────────────────────*/
+const State = {
+  step: 1,
+  selectedServices: {},   // { id: {ad, fiyat} }
+  selectedDate: null,
+  selectedTime: null,
+  calMonth: new Date(),
+  appointments: [],
+  services: [],
+  adminPage: 1,
+  adminFilter: '',
+  movingId: null,
+  editingServiceId: null,
+  adminAuthed: false,
+  _pendingImg: null,      // geçici base64 görsel
+};
+
+/* ─────────────────────────────────────────
+   BLOB SERVICE — Vercel Blob API entegrasyonu
+   Görseller /api/upload-image üzerinden Blob'a yüklenir.
+   Dönen kalıcı CDN URL'si hizmet kaydına yazılır.
+───────────────────────────────────────────*/
+const BlobService = {
+  UPLOAD_URL: '/api/upload-image',
+  DELETE_URL: '/api/delete-image',
+
+  async upload(base64, serviceId) {
+    const res = await fetch(this.UPLOAD_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ base64, serviceId, filename: `service-${serviceId}.jpg` }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || `HTTP ${res.status}`);
+    }
+    const data = await res.json();
+    return data.url;
+  },
+
+  async delete(url) {
+    if (!url || (!url.includes('vercel-storage.com') && !url.includes('blob.vercel-storage'))) return;
+    try {
+      await fetch(this.DELETE_URL, {
+        method:  'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ url }),
+      });
+    } catch(e) { console.warn('[BlobService.delete]', e); }
+  }
+};
+
+/* ─────────────────────────────────────────
+   STORAGE — localStorage (meta) + Vercel Blob (görseller)
+   Görsel yükleme akışı:
+   1) PC'den seçilir → canvas sıkıştırılır → State._pendingImg
+   2) Kaydet → /api/upload-image POST (base64 gönderilir)
+   3) Vercel Blob CDN URL döner → hizmet kaydına yazılır
+   4) localStorage'a sadece URL kaydedilir (küçük)
+   5) Sayfa yenilenince URL doğrudan <img src> olur
+───────────────────────────────────────────*/
+const Store = {
+  async load() {
+    try {
+      const s = localStorage.getItem('arya_services');
+      const a = localStorage.getItem('arya_appointments');
+      State.services     = s ? JSON.parse(s) : Store._defaultServices();
+      State.appointments = a ? JSON.parse(a) : [];
+    } catch(e) {
+      console.error('[Store.load]', e);
+      State.services     = Store._defaultServices();
+      State.appointments = [];
+    }
+  },
+
+  saveMeta() {
+    try {
+      localStorage.setItem('arya_services',     JSON.stringify(State.services));
+      localStorage.setItem('arya_appointments', JSON.stringify(State.appointments));
+    } catch(e) { console.error('[Store.saveMeta]', e); }
+  },
+
+  async saveImage(serviceId, base64Data) {
+    const url = await BlobService.upload(base64Data, serviceId);
+    const svc = State.services.find(s => s.id === serviceId);
+    if (svc) svc.img = url;
+    return url;
+  },
+
+  async deleteImage(serviceId) {
+    const svc = State.services.find(s => s.id === serviceId);
+    if (svc && svc.img) await BlobService.delete(svc.img);
+  },
+
+  save() { this.saveMeta(); },
+
+  _defaultServices() {
+    return [
+      { id:1, name:'Paça Boyu',           price:30,  duration:'45 dk', img: SERVICE_IMAGES.tailor  },
+      { id:2, name:'Bel Daraltma',         price:40,  duration:'60 dk', img: SERVICE_IMAGES.tailor  },
+      { id:3, name:'Takım Kuru Temizleme', price:120, duration:'2 gün', img: SERVICE_IMAGES.suit    },
+      { id:4, name:'Perde Kuru Temizleme', price:90,  duration:'3 gün', img: SERVICE_IMAGES.curtain },
+      { id:5, name:'Ütüleme',              price:20,  duration:'30 dk', img: SERVICE_IMAGES.iron    },
+      { id:6, name:'Yıkama',               price:35,  duration:'1 gün', img: SERVICE_IMAGES.wash    },
+    ];
+  }
+};
+
+/* ─────────────────────────────────────────
+   AUTH — demo amaçlı (gerçek projede backend gerekir)
+   Şifre: arya2025 (base64 encode edilmiş: YXJ5YTIwMjU=)
+───────────────────────────────────────────*/
+const Auth = {
+  PASS_B64: 'YXJ5YTIwMjU=', // "arya2025"
+  SESSION_KEY: 'arya_admin_session',
+  SESSION_TTL: 30 * 60 * 1000,
+
+  check(plainPw) {
+    // Base64 decode et ve karşılaştır
+    const realPw = atob(this.PASS_B64);
+    if (plainPw !== undefined) return plainPw === realPw;
+    // Session kontrolü
+    try {
+      const d = JSON.parse(sessionStorage.getItem(this.SESSION_KEY) || 'null');
+      if (d && Date.now() - d.t < this.SESSION_TTL) { State.adminAuthed = true; return true; }
+    } catch(e) {}
+    State.adminAuthed = false;
+    return false;
+  },
+  grant() {
+    sessionStorage.setItem(this.SESSION_KEY, JSON.stringify({ t: Date.now() }));
+    State.adminAuthed = true;
+  },
+  revoke() {
+    sessionStorage.removeItem(this.SESSION_KEY);
+    State.adminAuthed = false;
+  }
+};
+
+/* ─────────────────────────────────────────
+   TOAST
+───────────────────────────────────────────*/
+const Toast = (() => {
+  let timer;
+  return {
+    show(msg, type = 'success') {
+      const el = document.getElementById('toast');
+      el.className = 'visible ' + type;
+      el.innerHTML = (type === 'success'
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
+      ) + ' ' + msg;
+      clearTimeout(timer);
+      timer = setTimeout(() => el.className = '', 2600);
+    }
+  };
+})();
+
+/* ─────────────────────────────────────────
+   MODALS
+───────────────────────────────────────────*/
+const Modals = {
+  open(id) { 
+    document.getElementById(id).classList.add('open'); 
+  },
+  close(id) { 
+    document.getElementById(id).classList.remove('open');
+    // Modal kapanırken geçici görseli temizle (service modal ise)
+    if (id === 'modal-service') {
+      State._pendingImg = null;
+    }
+  }
+};
+
+/* ─────────────────────────────────────────
+   UI — Tab switching
+───────────────────────────────────────────*/
+const UI = {
+  switchTab(tab, btn) {
+    if (tab === 'admin' && !Auth.check()) {
+      Admin.loginOpen();
+      return;
+    }
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(tab + '-screen').classList.add('active');
+    document.querySelectorAll('.sw-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (tab === 'admin') Admin.render('dashboard');
+  }
+};
+
+/* ─────────────────────────────────────────
+   HERO IMAGE — changes based on selected services
+───────────────────────────────────────────*/
+const Hero = {
+  IMAGES: [
+    'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1400&q=80',
+    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&q=80',
+    'https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=1400&q=80',
+    'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=1400&q=80',
+  ],
+  idx: 0,
+  timer: null,
+  start() {
+    this.set(this.idx);
+    this.timer = setInterval(() => {
+      this.idx = (this.idx + 1) % this.IMAGES.length;
+      this.set(this.idx);
+    }, 5000);
+  },
+  set(i) {
+    document.getElementById('hero-canvas').src = this.IMAGES[i];
+  },
+  setForService(name) {
+    clearInterval(this.timer);
+    if (/perde/i.test(name)) this.set(3);
+    else if (/kuru|temizleme/i.test(name)) this.set(2);
+    else if (/takım|suit|elbise/i.test(name)) this.set(1);
+    else this.set(0);
+  }
+};
+
+/* ─────────────────────────────────────────
+   STEP MANAGER
+───────────────────────────────────────────*/
+const Steps = {
+  DEFS: [
+    { id:1, label:'Hizmet' },
+    { id:2, label:'Zaman'  },
+    { id:3, label:'Bilgi'  },
+  ],
+  renderTrack() {
+    const track = document.getElementById('step-track');
+    let html = '';
+    this.DEFS.forEach((s, i) => {
+      const isDone   = State.step > s.id;
+      const isActive = State.step === s.id;
+      const dotClass = isDone ? 'done' : isActive ? 'active' : '';
+      html += `
+        <div class="step-dot-wrap${isActive?' active':''}" onclick="Booking.goTo(${s.id})" title="${s.label}">
+          <div class="step-dot ${dotClass}">
+            ${isDone ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' : s.id}
+          </div>
+          <div class="step-dot-label">${s.label}</div>
+        </div>`;
+      if (i < this.DEFS.length - 1) {
+        html += `<div class="step-connector${isDone?' done':''}"></div>`;
+      }
+    });
+    track.innerHTML = html;
+  },
+  showPanel(id) {
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('panel-' + id);
+    if (panel) panel.classList.add('active');
+  }
+};
+
+/* ─────────────────────────────────────────
+   CALENDAR MODULE
+───────────────────────────────────────────*/
+const Cal = {
+  TR_MONTHS: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+  TR_DAYS:   ['Pt','Sa','Ça','Pe','Cu','Ct','Pz'],
+
+  prevMonth() { State.calMonth.setMonth(State.calMonth.getMonth() - 1); this.render(); },
+  nextMonth() { State.calMonth.setMonth(State.calMonth.getMonth() + 1); this.render(); },
+
+  render() {
+    const m = State.calMonth;
+    document.getElementById('cal-month-name').textContent = `${this.TR_MONTHS[m.getMonth()]} ${m.getFullYear()}`;
+
+    // Day labels
+    document.getElementById('day-labels').innerHTML = this.TR_DAYS.map(d => `<div class="day-label">${d}</div>`).join('');
+
+    const firstDay  = new Date(m.getFullYear(), m.getMonth(), 1, 12, 0, 0); // saat 12:00 (saat dilimi sorunlarını önlemek için)
+    const lastDay   = new Date(m.getFullYear(), m.getMonth() + 1, 0, 12, 0, 0);
+    const startDow  = (firstDay.getDay() + 6) % 7; // Monday=0
+    const today     = new Date();
+    const todayStr  = today.toDateString(); // string karşılaştırma için
+
+    let html = '';
+    for (let i = 0; i < startDow; i++) html += '<div class="cal-day empty"></div>';
+    for (let d = 1; d <= lastDay.getDate(); d++) {
+      const dt = new Date(m.getFullYear(), m.getMonth(), d, 12, 0, 0);
+      const isPast   = dt < today;
+      const isSun    = dt.getDay() === 0;
+      const isToday  = dt.toDateString() === todayStr;
+      const label    = `${d} ${this.TR_MONTHS[m.getMonth()]}`;
+      const selected = State.selectedDate === label;
+      const cls = [
+        'cal-day',
+        (isPast || isSun) ? 'disabled' : '',
+        isToday ? 'today' : '',
+        selected ? 'selected' : '',
+      ].filter(Boolean).join(' ');
+      html += `<div class="${cls}" onclick="Cal.selectDay(${d},'${this.TR_MONTHS[m.getMonth()]}')">${d}</div>`;
+    }
+    document.getElementById('days-grid').innerHTML = html;
+
+    // Times
+    const SLOTS = ['09:00','09:30','10:00','10:30','11:00','11:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'];
+    document.getElementById('time-grid').innerHTML = SLOTS.map(s =>
+      `<div class="time-slot${State.selectedTime===s?' selected':''}" onclick="Cal.selectTime('${s}')">${s}</div>`
+    ).join('');
+  },
+
+  selectDay(d, month) {
+    State.selectedDate = `${d} ${month}`;
+    this.render();
+  },
+  selectTime(t) {
+    State.selectedTime = t;
+    this.render();
+  }
+};
+
+/* ─────────────────────────────────────────
+   BOOKING MODULE
+───────────────────────────────────────────*/
+const Booking = {
+  renderServices() {
+    const grid = document.getElementById('service-grid');
+    grid.innerHTML = State.services.map(s => {
+      const sel = !!State.selectedServices[s.id];
+      return `
+        <div class="service-card${sel?' selected':''}" onclick="Booking.toggleService(${s.id})">
+          <div class="service-img-wrap">
+            <img src="${s.img}" alt="${s.name}" loading="lazy">
+            <div class="service-check">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0d0b07" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">${s.name}</div>
+            <div class="service-meta">
+              <span class="service-duration">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                ${s.duration}
+              </span>
+              <span class="service-price">${s.price} ₺</span>
+            </div>
+            <button class="service-add-btn" onclick="event.stopPropagation();Booking.toggleService(${s.id})">
+              ${sel
+                ? '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Eklendi'
+                : '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Ekle'}
+            </button>
+          </div>
+        </div>`;
+    }).join('');
+    this._renderChips();
+  },
+
+  _renderChips() {
+    const ids = Object.keys(State.selectedServices);
+    const summary = document.getElementById('selected-summary');
+    const chips   = document.getElementById('selected-chips');
+    if (!ids.length) { summary.classList.remove('visible'); return; }
+    summary.classList.add('visible');
+    chips.innerHTML = ids.map(id => {
+      const s = State.selectedServices[id];
+      return `<span class="chip">
+        ${s.name} · ${s.price} ₺
+        <span class="chip-remove" onclick="Booking.toggleService(${id})">✕</span>
+      </span>`;
+    }).join('');
+  },
+
+  toggleService(id) {
+    if (State.selectedServices[id]) {
+      delete State.selectedServices[id];
+    } else {
+      const s = State.services.find(sv => sv.id === id);
+      if (s) { State.selectedServices[id] = { name: s.name, price: s.price }; }
+    }
+    // Update hero image
+    const names = Object.values(State.selectedServices).map(s => s.name).join(' ');
+    if (names) Hero.setForService(names);
+    this.renderServices();
+  },
+
+  renderOrderSummary() {
+    const rows = document.getElementById('order-rows');
+    const ids  = Object.keys(State.selectedServices);
+    let total  = 0;
+
+    const svcs = ids.map(id => {
+      const s = State.selectedServices[id];
+      total += s.price;
+      return `<div class="order-row">
+        <span class="order-row-label">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          ${s.name}
+        </span>
+        <span class="order-row-value">${s.price} ₺</span>
+      </div>`;
+    }).join('');
+
+    rows.innerHTML = `
+      ${svcs}
+      <div class="order-row">
+        <span class="order-row-label">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Tarih / Saat
+        </span>
+        <span class="order-row-value">${State.selectedDate || '—'} · ${State.selectedTime || '—'}</span>
+      </div>`;
+
+    document.getElementById('order-total').textContent = total + ' ₺';
+  },
+
+  goTo(step) {
+    if (step >= State.step) return; // only go back
+    State.step = step;
+    this._update();
+  },
+
+  prevStep() {
+    if (State.step > 1) { State.step--; this._update(); }
+  },
+
+  nextStep() {
+    // Validate
+    if (State.step === 1 && !Object.keys(State.selectedServices).length) {
+      Toast.show('Lütfen en az bir hizmet seçin', 'error'); return;
+    }
+    if (State.step === 2 && (!State.selectedDate || !State.selectedTime)) {
+      Toast.show('Lütfen tarih ve saat seçin', 'error'); return;
+    }
+    if (State.step === 3) {
+      const name  = document.getElementById('f-name').value.trim();
+      const phone = document.getElementById('f-phone').value.trim().replace(/\D/g,'');
+      if (!name)  { Toast.show('Ad Soyad zorunludur', 'error'); return; }
+      if (!/^05\d{9}$/.test(phone)) { Toast.show('Geçerli telefon numarası giriniz (05xxxxxxxxx)', 'error'); return; }
+      this._createAppointment(name, phone);
+      return;
+    }
+    State.step++;
+    this._update();
+  },
+
+  _createAppointment(name, phone) {
+    const total = Object.values(State.selectedServices).reduce((t,s) => t + s.price, 0);
+    // Benzersiz numara oluştur (timestamp + random)
+    const no = 'ARY-' + Date.now().toString().slice(-4) + Math.floor(100 + Math.random() * 900);
+    const appt  = {
+      id:       Date.now() + Math.random(),
+      no,
+      name,
+      phone,
+      email:    document.getElementById('f-email').value.trim(),
+      note:     document.getElementById('f-note').value.trim(),
+      services: Object.values(State.selectedServices),
+      total,
+      date:     State.selectedDate,
+      time:     State.selectedTime,
+      paid:     false,
+      createdAt: new Date().toISOString(),
+    };
+    State.appointments.push(appt);
+    Store.save();
+
+    // WhatsApp log (console; real integration would call API)
+    const waMsg = `🆕 ARYA Randevu\nMüşteri: ${name} (${phone})\nHizmetler: ${appt.services.map(s=>s.name).join(', ')}\nTarih: ${State.selectedDate} ${State.selectedTime}\nTutar: ${total} ₺\nNo: ${no}`;
+    console.log('[WhatsApp]', waMsg);
+
+    document.getElementById('booking-number').textContent = no;
+    Toast.show('Randevunuz oluşturuldu!');
+    State.step = 5;
+    this._update();
+  },
+
+  _update() {
+    Steps.renderTrack();
+    Steps.showPanel(State.step);
+    const backBtn  = document.getElementById('btn-back');
+    const nextBtn  = document.getElementById('btn-next');
+    const footer   = document.getElementById('booking-footer');
+    const showBack = State.step > 1 && State.step !== 5;
+    backBtn.style.display = showBack ? 'inline-flex' : 'none';
+    footer.style.display  = State.step === 5 ? 'none' : 'flex';
+    if (State.step === 2) Cal.render();
+    if (State.step === 3) this.renderOrderSummary();
+  },
+
+  reset() {
+    State.step = 1;
+    State.selectedServices = {};
+    State.selectedDate = null;
+    State.selectedTime = null;
+    this.renderServices();
+    this._update();
+    Hero.idx = 0; Hero.start();
+  }
+};
+
+/* ─────────────────────────────────────────
+   ADMIN MODULE
+───────────────────────────────────────────*/
+const Admin = {
+  currentPage: 'dashboard',
+
+  loginOpen() {
+    document.getElementById('admin-pw').value = '';
+    document.getElementById('login-error').style.display = 'none';
+    Modals.open('modal-login');
+  },
+  loginCheck() {
+    const pw = document.getElementById('admin-pw').value;
+    if (Auth.check(pw)) {
+      Auth.grant();
+      Modals.close('modal-login');
+      // Switch to admin screen properly
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('admin-screen').classList.add('active');
+      document.querySelectorAll('.sw-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.tab === 'admin');
+      });
+      this.render('dashboard');
+    } else {
+      document.getElementById('login-error').style.display = 'block';
+      document.getElementById('admin-pw').value = '';
+      document.getElementById('admin-pw').focus();
+    }
+  },
+  loginCancel() {
+    Modals.close('modal-login');
+  },
+
+  nav(page, el) {
+    if (!Auth.check()) { this.loginOpen(); return; }
+    document.querySelectorAll('.admin-nav-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    this.render(page);
+  },
+
+  render(page) {
+    this.currentPage = page;
+    const content = document.getElementById('admin-content');
+    switch(page) {
+      case 'dashboard':   content.innerHTML = this._dashboard();   break;
+      case 'randevular':  content.innerHTML = this._randevular();  this._bindSearch(); break;
+      case 'hizmetler':   content.innerHTML = this._hizmetler();   break;
+      case 'musteriler':  content.innerHTML = this._musteriler();  break;
+      case 'ayarlar':     content.innerHTML = this._ayarlar();     break;
+    }
+  },
+
+  _dashboard() {
+    const now    = new Date();
+    const todayStr = now.toLocaleDateString('tr-TR', {day:'numeric',month:'long'}).replace('. ',' ');
+    const today  = State.appointments.filter(a => a.date && a.date.toLowerCase() === todayStr.toLowerCase()).length;
+    const paid   = State.appointments.filter(a => a.paid).length;
+    const waiting= State.appointments.filter(a => !a.paid).length;
+    const revenue= State.appointments.filter(a => a.paid).reduce((t,a)=>t+a.total,0);
+    const recent = State.appointments.slice(-6).reverse();
+
+    return `
+      <div class="admin-topbar">
+        <div class="admin-page-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Yönetim Panosu
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-label">Bugün</div><div class="stat-value">${today}</div></div>
+        <div class="stat-card"><div class="stat-label">Ödendi</div><div class="stat-value">${paid}</div></div>
+        <div class="stat-card"><div class="stat-label">Bekleyen</div><div class="stat-value">${waiting}</div></div>
+        <div class="stat-card"><div class="stat-label">Toplam Gelir</div><div class="stat-value" style="font-size:24px;">${revenue} ₺</div></div>
+      </div>
+      <div class="section-label" style="margin-bottom:14px;">Son Randevular</div>
+      <div class="data-table-wrap">
+        <div class="data-table-head tbl-randevu">
+          <div>Müşteri</div><div>Hizmetler</div><div>Tarih / Saat</div><div class="col-hide">Tutar</div><div>İşlem</div>
+        </div>
+        ${recent.length ? recent.map(a => this._appointmentRow(a)).join('') : '<div style="padding:32px;text-align:center;color:var(--text-muted);">Henüz randevu yok</div>'}
+      </div>`;
+  },
+
+  _randevular() {
+    const q = State.adminFilter.toLowerCase();
+    const filtered = State.appointments.filter(a =>
+      a.name.toLowerCase().includes(q) || a.phone.includes(q)
+    ).reverse();
+    const PAGE_SIZE = 8;
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    const page = Math.min(State.adminPage, totalPages);
+    const pageData = filtered.slice((page-1)*PAGE_SIZE, page*PAGE_SIZE);
+
+    return `
+      <div class="admin-topbar">
+        <div class="admin-page-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Randevular
+        </div>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="search-input" id="admin-search" placeholder="Ara..." value="${State.adminFilter}">
+        </div>
+      </div>
+      <div class="data-table-wrap">
+        <div class="data-table-head tbl-randevu">
+          <div>Müşteri</div><div>Hizmetler</div><div>Tarih / Saat</div><div class="col-hide">Durum</div><div>İşlem</div>
+        </div>
+        ${pageData.length ? pageData.map(a => this._appointmentRow(a)).join('') : '<div style="padding:32px;text-align:center;color:var(--text-muted);">Kayıt bulunamadı</div>'}
+      </div>
+      <div class="pagination">
+        <button class="page-btn" onclick="Admin.changePage(${page-1})" ${page<=1?'disabled':''}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span class="page-info">${page} / ${totalPages}</span>
+        <button class="page-btn" onclick="Admin.changePage(${page+1})" ${page>=totalPages?'disabled':''}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>`;
+  },
+
+  _appointmentRow(a) {
+    return `
+      <div class="data-table-row tbl-randevu">
+        <div>
+          <div style="font-weight:500;">${a.name}</div>
+          <div style="font-size:11px;color:var(--text-muted);font-family:'DM Mono',monospace;">${a.phone}</div>
+        </div>
+        <div style="font-size:12px;color:var(--text-secondary);">${a.services.map(s=>s.name).join(', ')}</div>
+        <div style="font-size:12px;font-family:'DM Mono',monospace;">${a.date}<br>${a.time}</div>
+        <div class="col-hide">
+          <span class="badge ${a.paid?'badge-success':'badge-pending'}">${a.paid?'Ödendi':'Bekliyor'}</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;">
+          <button class="action-btn wa" title="WhatsApp" onclick="Admin.whatsapp('${a.phone}')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </button>
+          <button class="action-btn" title="Ödeme Al" onclick="Admin.togglePaid(${a.id})" style="${a.paid?'border-color:var(--green);color:var(--green);':''}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </button>
+          <button class="action-btn" title="Taşı" onclick="Admin.moveOpen(${a.id})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+          </button>
+          <button class="action-btn danger" title="Sil" onclick="Admin.deleteAppt(${a.id})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          </button>
+        </div>
+      </div>`;
+  },
+
+  _hizmetler() {
+    return `
+      <div class="admin-topbar">
+        <div class="admin-page-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/></svg>
+          Hizmetler
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="Admin.serviceModal()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Yeni Hizmet
+        </button>
+      </div>
+      <div class="hizmet-admin-grid">
+        ${State.services.map(s => `
+          <div class="hizmet-admin-card">
+            <img class="hizmet-admin-img" src="${s.img}" alt="${s.name}" style="width:100%;height:90px;object-fit:cover;">
+            <div class="hizmet-admin-body">
+              <div class="hizmet-admin-name">${s.name}</div>
+              <div class="hizmet-admin-meta">
+                <span>${s.duration}</span>
+                <span class="hizmet-admin-price">${s.price} ₺</span>
+              </div>
+              <div class="hizmet-admin-actions">
+                <button class="btn btn-ghost btn-sm" onclick="Admin.serviceModal(${s.id})">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  Düzenle
+                </button>
+                <button class="btn btn-sm" style="border:1px solid rgba(224,82,82,0.3);color:var(--red);background:rgba(224,82,82,0.06);" onclick="Admin.deleteService(${s.id})">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
+                  Sil
+                </button>
+              </div>
+            </div>
+          </div>`).join('')}
+      </div>`;
+  },
+
+  _musteriler() {
+    const map = new Map();
+    State.appointments.forEach(a => {
+      if (!map.has(a.phone)) map.set(a.phone, { name:a.name, phone:a.phone, count:0, total:0, lastDate:a.date });
+      const entry = map.get(a.phone);
+      entry.count++;
+      entry.total += a.total;
+      entry.lastDate = a.date;
+    });
+    const customers = [...map.values()];
+    return `
+      <div class="admin-topbar">
+        <div class="admin-page-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Müşteriler <span style="font-size:18px;color:var(--text-muted);">(${customers.length})</span>
+        </div>
+      </div>
+      <div class="data-table-wrap">
+        <div class="data-table-head tbl-musteri">
+          <div>Müşteri</div><div class="col-hide">Telefon</div><div class="col-hide">Randevu</div><div>Harcama</div><div></div>
+        </div>
+        ${customers.length ? customers.map(c => `
+          <div class="data-table-row tbl-musteri">
+            <div>
+              <div style="font-weight:500;">${c.name}</div>
+              <div style="font-size:11px;color:var(--text-muted);">${c.lastDate || '—'}</div>
+            </div>
+            <div class="col-hide" style="font-family:'DM Mono',monospace;font-size:12px;">${c.phone}</div>
+            <div class="col-hide" style="font-size:13px;">${c.count} randevu</div>
+            <div style="color:var(--gold);font-weight:600;">${c.total} ₺</div>
+            <div><button class="action-btn wa" onclick="Admin.whatsapp('${c.phone}')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </button></div>
+          </div>`).join('') : '<div style="padding:32px;text-align:center;color:var(--text-muted);">Henüz müşteri yok</div>'}
+      </div>`;
+  },
+
+  _ayarlar() {
+    return `
+      <div class="admin-topbar">
+        <div class="admin-page-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Ayarlar
+        </div>
+      </div>
+      <div class="settings-card">
+        <div class="settings-head">İletişim Bilgileri</div>
+        <div class="settings-body">
+          <div class="settings-row"><span class="settings-row-label">WhatsApp 1</span><span class="settings-row-value">+90 555 182 37 76</span></div>
+          <div class="settings-row"><span class="settings-row-label">WhatsApp 2</span><span class="settings-row-value">+90 552 267 81 92</span></div>
+          <div class="settings-row"><span class="settings-row-label">E-posta</span><span class="settings-row-value">info@arya.com.tr</span></div>
+          <div class="settings-row"><span class="settings-row-label">Adres</span><span class="settings-row-value">Bursa, Türkiye</span></div>
+        </div>
+      </div>
+      <div class="settings-card">
+        <div class="settings-head">Güvenlik</div>
+        <div class="settings-body">
+          <div class="settings-row">
+            <span class="settings-row-label">Oturum</span>
+            <button class="btn btn-ghost btn-sm" onclick="Admin.logout()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              Çıkış Yap
+            </button>
+          </div>
+        </div>
+      </div>`;
+  },
+
+  _bindSearch() {
+    const el = document.getElementById('admin-search');
+    if (el) el.addEventListener('input', (e) => {
+      State.adminFilter = e.target.value;
+      State.adminPage = 1;
+      this.render('randevular');
+    });
+  },
+
+  changePage(p) { State.adminPage = p; this.render('randevular'); },
+
+  whatsapp(phone) {
+    window.open(`https://wa.me/90${phone.replace(/\D/g,'')}`, '_blank');
+  },
+
+  togglePaid(id) {
+    const a = State.appointments.find(a => a.id === id);
+    if (a) { a.paid = !a.paid; Store.save(); Toast.show(a.paid ? 'Ödeme alındı' : 'Ödeme geri alındı'); this.render(this.currentPage); }
+  },
+
+  deleteAppt(id) {
+    if (!confirm('Bu randevuyu silmek istiyor musunuz?')) return;
+    State.appointments = State.appointments.filter(a => a.id !== id);
+    Store.save();
+    Toast.show('Randevu silindi');
+    this.render(this.currentPage);
+  },
+
+  moveOpen(id) {
+    State.movingId = id;
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('move-date').min = today;
+    Modals.open('modal-move');
+  },
+
+  moveConfirm() {
+    const date = document.getElementById('move-date').value;
+    const time = document.getElementById('move-time').value;
+    if (!date) { Toast.show('Tarih seçin', 'error'); return; }
+    const a = State.appointments.find(a => a.id === State.movingId);
+    if (a) {
+      const parts = date.split('-');
+      const MONTHS = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+      a.date = `${parseInt(parts[2])} ${MONTHS[parseInt(parts[1])-1]}`;
+      a.time = time;
+      Store.save();
+      Modals.close('modal-move');
+      Toast.show('Randevu taşındı');
+      this.render(this.currentPage);
+    }
+  },
+
+  serviceModal(id = null) {
+    State.editingServiceId = id;
+    State._pendingImg = null;  // önceki bekleyen görsel temizle
+    const titleEl = document.getElementById('modal-service-title');
+    const preview = document.getElementById('svc-preview');
+    preview.style.display = 'none';
+    preview.src = '';
+    document.getElementById('svc-img-url').value  = '';
+    document.getElementById('svc-img-data').value = '';  // sadece işaretçi, base64 değil
+    document.getElementById('svc-id').value       = id || '';
+    document.getElementById('svc-name').value     = '';
+    document.getElementById('svc-price').value    = '';
+    document.getElementById('svc-duration').value = '';
+    // Dosya input'unu sıfırla
+    const fileInput = document.getElementById('svc-file');
+    if (fileInput) fileInput.value = '';
+
+    if (id) {
+      const s = State.services.find(sv => sv.id === id);
+      if (!s) return;
+      titleEl.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Hizmeti Düzenle`;
+      document.getElementById('svc-name').value     = s.name;
+      document.getElementById('svc-price').value    = s.price;
+      document.getElementById('svc-duration').value = s.duration;
+      // Mevcut fotoğrafı önizlemede göster
+      if (s.img) {
+        preview.src = s.img; preview.style.display = 'block';
+        document.getElementById('svc-img-url').value = s.img;
+      }
+    } else {
+      titleEl.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Yeni Hizmet`;
+    }
+
+    // Kaydet butonunu aktif et (önceki donmadan kalmış olabilir)
+    const saveBtn = document.querySelector('#modal-service .btn-gold');
+    if (saveBtn) { saveBtn.disabled = false; saveBtn.innerHTML = 'Kaydet'; }
+
+    Modals.open('modal-service');
+  },
+
+  handleImageUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Dosya boyutu kontrolü (5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      Toast.show('Görsel 5MB\'dan küçük olmalıdır', 'error');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      // Canvas ile sıkıştır (max 900px, %82 JPEG)
+      const rawImg = new Image();
+      rawImg.onload = () => {
+        try {
+          const MAX_W = 900;
+          const ratio  = Math.min(1, MAX_W / rawImg.width);
+          const canvas = document.createElement('canvas');
+          canvas.width  = Math.round(rawImg.width  * ratio);
+          canvas.height = Math.round(rawImg.height * ratio);
+          canvas.getContext('2d').drawImage(rawImg, 0, 0, canvas.width, canvas.height);
+          const compressed = canvas.toDataURL('image/jpeg', 0.8);
+
+          // State'e al
+          State._pendingImg = compressed;
+
+          // Önizleme göster
+          const preview = document.getElementById('svc-preview');
+          if (preview) { preview.src = compressed; preview.style.display = 'block'; }
+
+          // input'a küçük bir işaretçi yaz (varlık kontrolü için)
+          const dataInput = document.getElementById('svc-img-data');
+          if (dataInput) dataInput.value = '__pending__';
+
+          Toast.show('Fotoğraf hazır, kaydedebilirsiniz');
+        } catch(err) {
+          console.error('[handleImageUpload canvas]', err);
+          // Canvas başarısız olursa ham veriyi kullan
+          State._pendingImg = ev.target.result;
+          const preview = document.getElementById('svc-preview');
+          if (preview) { preview.src = ev.target.result; preview.style.display = 'block'; }
+          const dataInput = document.getElementById('svc-img-data');
+          if (dataInput) dataInput.value = '__pending__';
+        }
+      };
+      rawImg.onerror = () => Toast.show('Görsel okunamadı', 'error');
+      rawImg.src = ev.target.result;
+    };
+    reader.onerror = () => Toast.show('Dosya okunamadı', 'error');
+    reader.readAsDataURL(file);
+  },
+
+  handleImageUrl(url) {
+    if (!url) return;
+    const preview = document.getElementById('svc-preview');
+    preview.src = url; preview.style.display = 'block';
+  },
+
+  async saveService() {
+    const name     = document.getElementById('svc-name').value.trim();
+    const price    = parseInt(document.getElementById('svc-price').value);
+    const duration = document.getElementById('svc-duration').value.trim();
+    const imgUrl   = document.getElementById('svc-img-url').value.trim();
+    const imgData  = document.getElementById('svc-img-data').value.trim();
+
+    if (!name || isNaN(price) || !duration) {
+      Toast.show('Ad, fiyat ve süre zorunludur', 'error'); return;
+    }
+
+    // Butonu kilitle
+    const saveBtn = document.querySelector('#modal-service .btn-gold');
+    const resetBtn = () => {
+      if (saveBtn) { saveBtn.disabled = false; saveBtn.innerHTML = 'Kaydet'; }
+    };
+    if (saveBtn) { saveBtn.disabled = true; saveBtn.innerHTML = 'Kaydediliyor…'; }
+
+    try {
+      // Görsel kaynağını belirle:
+      const newImgBase64 = State._pendingImg;
+      const newImgUrl    = imgUrl || null;
+
+      let serviceId;
+
+      if (State.editingServiceId) {
+        serviceId = State.editingServiceId;
+        const s   = State.services.find(sv => sv.id === serviceId);
+        if (s) {
+          s.name     = name;
+          s.price    = price;
+          s.duration = duration;
+          if (newImgBase64)      s.img = newImgBase64;  // state önizleme için
+          else if (newImgUrl)    s.img = newImgUrl;
+          // else → mevcut img korunur
+        }
+      } else {
+        serviceId = Math.max(0, ...State.services.map(s => s.id)) + 1;
+        const img = newImgBase64 || newImgUrl || SERVICE_IMAGES.tailor;
+        State.services.push({ id: serviceId, name, price, duration, img });
+      }
+
+      // IndexedDB'ye fotoğrafı kaydet (asıl kalıcı depolama)
+      if (newImgBase64) {
+        await Store.saveImage(serviceId, newImgBase64);
+      } else if (newImgUrl) {
+        // URL tabanlı görselde IndexedDB'ye gerek yok, meta'ya yaz
+        Store.saveMeta();
+      }
+
+      // Meta (ad/fiyat/süre) kaydet
+      Store.saveMeta();
+
+      // Temizle
+      State._pendingImg = null;
+
+      Modals.close('modal-service');
+      Toast.show('✓ Hizmet ve fotoğraf kaydedildi');
+      this.render('hizmetler');
+      Booking.renderServices();
+
+    } catch(err) {
+      console.error('[saveService]', err);
+      Toast.show('Kayıt sırasında hata oluştu', 'error');
+      resetBtn();
+    }
+  },
+
+  async deleteService(id) {
+    if (!confirm('Bu hizmeti silmek istiyor musunuz?')) return;
+    State.services = State.services.filter(s => s.id !== id);
+    // IndexedDB'den de görseli sil
+    await Store.deleteImage(id);
+    Store.saveMeta();
+    Toast.show('Hizmet silindi');
+    this.render('hizmetler');
+    Booking.renderServices();
+  },
+
+  logout() {
+    Auth.revoke();
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('musteri-screen').classList.add('active');
+    document.querySelectorAll('.sw-btn').forEach(b => b.classList.toggle('active', b.dataset.tab==='musteri'));
+    Toast.show('Çıkış yapıldı');
+  }
+};
+
+/* ─────────────────────────────────────────
+   INIT
+───────────────────────────────────────────*/
+async function init() {
+  // IndexedDB'den fotoğraflar dahil tüm verileri yükle
+  await Store.load();
+
+  // Initial step render
+  Steps.renderTrack();
+  Steps.showPanel(1);
+  Booking.renderServices();
+  Cal.render();
+  State.calMonth.setDate(1);
+  Hero.start();
+
+  // Expose to global for inline handlers
+  window.UI      = UI;
+  window.Booking = Booking;
+  window.Cal     = Cal;
+  window.Admin   = Admin;
+  window.Modals  = Modals;
+}
+
+// Kick off
+init();
+
+})(); // end IIFE
+</script>
+</body>
+</html>
