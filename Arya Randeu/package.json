@@ -1,0 +1,21 @@
+{
+  "name": "arya-terzi",
+  "version": "1.0.0",
+  "description": "ARYA Terzi & Kuru Temizleme",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo no-build",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@vercel/blob": "^0.23.4"
+  },
+  "devDependencies": {
+    "vercel": "^34.0.0"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}
