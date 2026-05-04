@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arya Terzi — Kuru Temizleme & Terzi Hizmetleri | Nilüfer / Bursa</title>
-    <meta name="description" content="Görükle'de profesyonel kuru temizleme ve terzi hizmetleri. Pantolon tadilat, gömlek dikim, elbise, gelinlik ve özel dikim. 0555 182 3776">
+    <meta name="description"
+        content="Görükle'de profesyonel kuru temizleme ve terzi hizmetleri. Pantolon tadilat, gömlek dikim, elbise, gelinlik ve özel dikim. 0555 182 3776">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
@@ -40,14 +43,30 @@
         }
 
         @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -85,7 +104,9 @@
             background: none;
         }
 
-        input, select, textarea {
+        input,
+        select,
+        textarea {
             font-family: inherit;
         }
 
@@ -271,19 +292,22 @@
         }
 
         @keyframes heroZoom {
-            from { transform: scale(1.1); }
-            to { transform: scale(1.15); }
+            from {
+                transform: scale(1.1);
+            }
+
+            to {
+                transform: scale(1.15);
+            }
         }
 
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(8, 8, 8, 0.92) 0%,
-                rgba(8, 8, 8, 0.75) 50%,
-                rgba(8, 8, 8, 0.85) 100%
-            );
+            background: linear-gradient(135deg,
+                    rgba(8, 8, 8, 0.92) 0%,
+                    rgba(8, 8, 8, 0.75) 50%,
+                    rgba(8, 8, 8, 0.85) 100%);
         }
 
         .hero-noise {
@@ -400,7 +424,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%);
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.2) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -455,8 +479,17 @@
         }
 
         @keyframes scrollPulse {
-            0%, 100% { opacity: 0.5; height: 40px; }
-            50% { opacity: 1; height: 50px; }
+
+            0%,
+            100% {
+                opacity: 0.5;
+                height: 40px;
+            }
+
+            50% {
+                opacity: 1;
+                height: 50px;
+            }
         }
 
         /* ========== HERO SLIDER ========== */
@@ -481,11 +514,25 @@
         }
 
         @keyframes slideFade {
-            0% { opacity: 0; }
-            5% { opacity: 1; }
-            50% { opacity: 1; }
-            55% { opacity: 0; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            55% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         .hero-slide .hero-bg img {
@@ -506,15 +553,31 @@
         }
 
         @keyframes heroZoom1 {
-            0% { transform: scale(1.1); }
-            50% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            0% {
+                transform: scale(1.1);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
         }
 
         @keyframes heroZoom2 {
-            0% { transform: scale(1.1); }
-            50% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            0% {
+                transform: scale(1.1);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
         }
 
         .hero-dots {
@@ -552,6 +615,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -562,7 +626,7 @@
         .services {
             padding: 6rem 0;
             background: linear-gradient(180deg, rgba(20, 22, 24, 0.95) 0%, rgba(26, 28, 32, 0.95) 50%, rgba(20, 22, 24, 0.95) 100%),
-                        url('unnamed.webp');
+                url('unnamed.webp');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -1154,8 +1218,15 @@
         }
 
         @keyframes footerFlow {
-            0%, 100% { background-position: 0% 0%; }
-            50% { background-position: 0% 100%; }
+
+            0%,
+            100% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 0% 100%;
+            }
         }
 
         .footer-text {
@@ -1304,16 +1375,54 @@
         }
 
         @media (max-width: 600px) {
+            * {
+                max-width: 100%;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
             .header {
-                padding: 1rem;
+                padding: 0.75rem 1rem;
             }
 
             .logo-text {
-                font-size: 1.25rem;
+                font-size: 1.1rem;
+            }
+
+            .header-inner {
+                max-width: 100%;
+            }
+
+            .header-actions {
+                gap: 0.5rem;
+            }
+
+            .btn-whatsapp,
+            .btn-cta {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.75rem;
+            }
+
+            .btn-whatsapp span,
+            .btn-cta span {
+                display: none;
             }
 
             .hero {
                 min-height: 100vh;
+                width: 100%;
+            }
+
+            .hero-slider {
+                width: 100%;
+                height: 100vh;
+            }
+
+            .hero-slide {
+                width: 100%;
+                height: 100vh;
             }
 
             .hero-bg {
@@ -1324,32 +1433,58 @@
             .hero-bg img {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
-                object-position: center center;
+                object-fit: cover !important;
+                object-position: center center !important;
             }
 
-            .hero-title {
-                font-size: 2rem;
+            .hero-content {
+                padding: 6rem 1rem 8rem;
+                max-width: 100%;
             }
 
-            .hero-subtitle {
-                font-size: 0.9rem;
+            .hero-badge {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.75rem;
             }
 
             .hero-brand-name {
-                font-size: clamp(2.5rem, 8vw, 4rem);
+                font-size: clamp(2rem, 10vw, 3rem) !important;
+            }
+
+            .hero-brand-tagline {
+                font-size: 0.65rem;
+            }
+
+            .hero-title {
+                font-size: 1.75rem !important;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 0.85rem !important;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: 0.75rem;
             }
 
             .btn-hero-primary,
             .btn-hero-secondary {
-                padding: 0.75rem 1rem;
-                font-size: 0.85rem;
+                width: 100%;
+                justify-content: center;
+                padding: 0.875rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-dots {
+                bottom: 1rem;
             }
 
             .services {
-                padding: 3rem 0;
-                background-size: cover;
-                background-position: center center;
+                padding: 3rem 1rem;
+                width: 100%;
             }
 
             .services::before {
@@ -1358,31 +1493,101 @@
 
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
-            .hero-slide .hero-bg img {
-                object-position: center center;
+            .section-header {
+                margin-bottom: 2rem;
+            }
+
+            .section-label {
+                font-size: 0.65rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .service-card {
+                padding: 1.25rem;
+            }
+
+            .service-title {
+                font-size: 1rem;
+            }
+
+            .service-desc {
+                font-size: 0.8rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .info-card {
+                padding: 1.25rem;
+            }
+
+            .container {
+                padding: 0 1rem;
             }
 
             .modal {
-                max-height: 95vh;
-                border-radius: 16px;
-            }
-
-            .modal-header {
-                padding: 1rem 1.25rem;
+                width: 95%;
+                margin: 0.5rem;
+                max-height: 90vh;
             }
 
             .modal-body {
-                padding: 1.25rem;
+                padding: 1rem;
+            }
+
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hours-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 2rem 1rem;
             }
         }
 
+        .modal-header {
+            padding: 1rem 1.25rem;
+        }
+
+        .modal-body {
+            padding: 1.25rem;
+        }
+
         /* ========== ANIMATIONS ========== */
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            animation-delay: 0.4s;
+        }
 
         .fade-in {
             opacity: 0;
@@ -1464,7 +1669,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* ========== ACCESSIBILITY ========== */
@@ -1487,7 +1694,10 @@
 
         /* ========== PREFERS REDUCED MOTION ========== */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -1504,18 +1714,29 @@
 
         /* ========== TOUCH OPTIMIZATION ========== */
         @media (hover: none) and (pointer: coarse) {
-            .btn-submit, .btn-cta, .btn-whatsapp {
+
+            .btn-submit,
+            .btn-cta,
+            .btn-whatsapp {
                 min-height: 48px;
             }
 
-            .form-input, .form-select, .form-textarea {
+            .form-input,
+            .form-select,
+            .form-textarea {
                 min-height: 48px;
             }
         }
 
         /* ========== PRINT STYLES ========== */
         @media print {
-            .header, .hero, .services, .info-section, .modal-overlay, .footer {
+
+            .header,
+            .hero,
+            .services,
+            .info-section,
+            .modal-overlay,
+            .footer {
                 background: white !important;
                 color: black !important;
             }
@@ -1535,33 +1756,44 @@
             <div class="header-actions">
                 <a href="https://wa.me/905551823776" class="btn-whatsapp" target="_blank" rel="noopener">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
                     WhatsApp
                 </a>
                 <button class="btn-cta" onclick="openModal()">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                        <line x1="16" y1="2" x2="16" y2="6"/>
-                        <line x1="8" y1="2" x2="8" y2="6"/>
-                        <line x1="3" y1="10" x2="21" y2="10"/>
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
                     </svg>
                     Randevu
                 </button>
                 <button onclick="openAdminLogin()" class="btn-admin" title="Admin">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                     </svg>
                 </button>
-                <button class="mobile-menu-btn" aria-label="Menu">
+                <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMobileMenu()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <line x1="3" y1="12" x2="21" y2="12"/>
-                        <line x1="3" y1="18" x2="21" y2="18"/>
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
                     </svg>
                 </button>
             </div>
+        </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu"
+            style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-secondary); border-top: 1px solid var(--border); padding: 1rem;">
+            <a href="#services" class="header-link" style="display: block; padding: 0.75rem 1rem;"
+                onclick="toggleMobileMenu()">Hizmetler</a>
+            <a href="#contact" class="header-link" style="display: block; padding: 0.75rem 1rem;"
+                onclick="toggleMobileMenu()">İletişim</a>
+            <a href="#" class="header-link" style="display: block; padding: 0.75rem 1rem;"
+                onclick="openModal(); toggleMobileMenu(); return false;">Randevu</a>
         </div>
     </header>
 
@@ -1586,7 +1818,8 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                 </svg>
                 Görükle, Nilüfer / Bursa
             </div>
@@ -1598,22 +1831,23 @@
                 Ustalıkla <span class="highlight">İşlenir</span>
             </h1>
             <p class="hero-subtitle">
-                Görükle'de profesyonel kuru temizleme ve terzi hizmetleri. 
+                Görükle'de profesyonel kuru temizleme ve terzi hizmetleri.
                 Her dikişte mükemmellik, her temizlikte profesyonellik.
             </p>
             <div class="hero-cta">
                 <button class="btn-hero-primary" onclick="openModal()">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                        <line x1="16" y1="2" x2="16" y2="6"/>
-                        <line x1="8" y1="2" x2="8" y2="6"/>
-                        <line x1="3" y1="10" x2="21" y2="10"/>
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
                     </svg>
                     Randevu Al
                 </button>
                 <a href="https://wa.me/905551823776" class="btn-hero-secondary" target="_blank" rel="noopener">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
                     WhatsApp
                 </a>
@@ -1637,22 +1871,26 @@
                 <div class="service-card fade-in stagger-1">
                     <div class="service-accent"></div>
                     <h3 class="service-title">Terzi Hizmetleri</h3>
-                    <p class="service-desc">Pantolon, gömlek, ceket, elbise tadilatları. Fermuar değişimi, düğme dikimi, özel dikim ve restorasyon.</p>
+                    <p class="service-desc">Pantolon, gömlek, ceket, elbise tadilatları. Fermuar değişimi, düğme dikimi,
+                        özel dikim ve restorasyon.</p>
                 </div>
                 <div class="service-card fade-in stagger-2">
                     <div class="service-accent"></div>
                     <h3 class="service-title">Kuru Temizleme</h3>
-                    <p class="service-desc">Gelinlik, abiye, takım elbise, mont ve kaban temizleme. Özel kumaşlar ve değerli giysiler.</p>
+                    <p class="service-desc">Gelinlik, abiye, takım elbise, mont ve kaban temizleme. Özel kumaşlar ve
+                        değerli giysiler.</p>
                 </div>
                 <div class="service-card fade-in stagger-3">
                     <div class="service-accent"></div>
                     <h3 class="service-title">Yıkama & Ütü</h3>
-                    <p class="service-desc">Profesyonel yıkama, ütüleme ve yıkama+ütü paketleri. Perde, nevresim ve battaniye yıkama.</p>
+                    <p class="service-desc">Profesyonel yıkama, ütüleme ve yıkama+ütü paketleri. Perde, nevresim ve
+                        battaniye yıkama.</p>
                 </div>
                 <div class="service-card fade-in stagger-4">
                     <div class="service-accent"></div>
                     <h3 class="service-title">Kumaş İşlemleri</h3>
-                    <p class="service-desc">Kumaş boyama, renk değiştirme, nakış işleme, patch tamiri ve kumaş restorasyonu.</p>
+                    <p class="service-desc">Kumaş boyama, renk değiştirme, nakış işleme, patch tamiri ve kumaş
+                        restorasyonu.</p>
                 </div>
             </div>
         </div>
@@ -1682,7 +1920,8 @@
                     <div class="info-icon">📱</div>
                     <h3 class="info-title">İletişim</h3>
                     <p class="info-text">
-                        <a href="https://wa.me/905551823776" target="_blank" rel="noopener" class="highlight">WhatsApp: 0555 182 37 76</a><br>
+                        <a href="https://wa.me/905551823776" target="_blank" rel="noopener" class="highlight">WhatsApp:
+                            0555 182 37 76</a><br>
                         <a href="mailto:aryaterzim@gmail.com" class="highlight">aryaterzim@gmail.com</a>
                     </p>
                 </div>
@@ -1694,20 +1933,21 @@
     <footer class="footer">
         <div class="container">
             <p class="footer-text">
-                © 2024 <span class="footer-brand">Arya Terzi Kuru Temizleme</span> — Görükle, Atatürk Cd. yerleşim sokak iş merkezi hanı no/ 43, Nilüfer/Bursa
+                © 2024 <span class="footer-brand">Arya Terzi Kuru Temizleme</span> — Görükle, Atatürk Cd. yerleşim sokak
+                iş merkezi hanı no/ 43, Nilüfer/Bursa
             </p>
         </div>
     </footer>
 
     <!-- APPOINTMENT MODAL -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-overlay" id="modalOverlay" onclick="if(event.target === this) closeModal();">
         <div class="modal" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <h2 class="modal-title">Randevu Al</h2>
                 <button class="modal-close" onclick="closeModal()" aria-label="Kapat">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                 </button>
             </div>
@@ -1735,22 +1975,26 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label class="form-label" for="firstName">İsim</label>
-                                    <input type="text" id="firstName" class="form-input" required placeholder="Adınız" maxlength="30">
+                                    <input type="text" id="firstName" class="form-input" required placeholder="Adınız"
+                                        maxlength="30">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="lastName">Soyad (Baş Harfi)</label>
-                                    <input type="text" id="lastName" class="form-input" required placeholder="B" maxlength="1" style="text-transform: uppercase;">
+                                    <input type="text" id="lastName" class="form-input" required placeholder="B"
+                                        maxlength="1" style="text-transform: uppercase;">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
                                     <label class="form-label" for="phone">Telefon (Son 4 Hane)</label>
-                                    <input type="tel" id="phone" class="form-input" required placeholder="1234" maxlength="4">
+                                    <input type="tel" id="phone" class="form-input" required placeholder="1234"
+                                        maxlength="4" pattern="\d{4}" inputmode="numeric">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="email">E-posta</label>
-                                    <input type="email" id="email" class="form-input" required placeholder="ornek@email.com">
+                                    <input type="email" id="email" class="form-input" required
+                                        placeholder="ornek@email.com">
                                 </div>
                             </div>
 
@@ -1765,7 +2009,7 @@
                                         <option value="elbise-tadilat">Elbise Tadilatı</option>
                                         <option value="fermuar-degisim">Fermuar Değişimi</option>
                                         <option value="astar-degisim">Astar Değişimi</option>
-                                        <option value="dugme-dikimi">Düğme Dikimi</option>
+                                        <option value="dugme-kayip">Düğme Dikimi</option>
                                         <option value="yirtik-tamiri">Yırtık Tamiri</option>
                                         <option value="ozel-dikim">Özel Dikim</option>
                                         <option value="gelinlik-mod">Gelinlik Modifikasyonu</option>
@@ -1778,7 +2022,7 @@
                                         <option value="leke-cikarma">Leke Çıkarma</option>
                                         <option value="perde-yorgan">Perde/Yorgan</option>
                                         <option value="gelinlik-temizleme">Gelinlik Temizleme</option>
-                                        <option value="deri-temizleme">Deri/Süet Temizleme</option>
+                                        <option value="deri-suet">Deri/Süet Temizleme</option>
                                     </optgroup>
                                     <optgroup label="🎨 Diğer">
                                         <option value="kumas-boyama">Kumaş Boyama</option>
@@ -1803,15 +2047,17 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="notes">Not (İsteğe Bağlı)</label>
-                                <textarea id="notes" class="form-textarea" placeholder="Randevu ile ilgili notlarınız..." maxlength="300"></textarea>
+                                <textarea id="notes" class="form-textarea"
+                                    placeholder="Randevu ile ilgili notlarınız..." maxlength="300"></textarea>
                             </div>
 
                             <button type="submit" class="btn-submit">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="16" y1="2" x2="16" y2="6"/>
-                                    <line x1="8" y1="2" x2="8" y2="6"/>
-                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
                                 </svg>
                                 Randevu Oluştur
                             </button>
@@ -1824,13 +2070,15 @@
 
                         <div class="form-group">
                             <label class="form-label" for="searchPhone">Telefon (Son 4 Hane)</label>
-                            <input type="tel" id="searchPhone" class="form-input" placeholder="1234" maxlength="4">
+                            <input type="tel" id="searchPhone" class="form-input" placeholder="1234" maxlength="4"
+                                pattern="\d{4}" inputmode="numeric">
                         </div>
 
                         <button id="searchBtn" class="btn-submit" style="margin-bottom: 1rem;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"/>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
                             </svg>
                             Sorgula
                         </button>
@@ -1841,43 +2089,52 @@
                         <div class="location-box">
                             <div class="location-row">
                                 <div class="location-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                        <circle cx="12" cy="10" r="3"/>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
                                     </svg>
                                 </div>
                                 <div class="location-content">
                                     <div class="label">Adres</div>
-                                    <div class="value">Görükle, Atatürk Cd. yerleşim sokak iş merkezi hanı no/ 43<br>16000 Nilüfer/Bursa</div>
+                                    <div class="value">Görükle, Atatürk Cd. yerleşim sokak iş merkezi hanı no/
+                                        43<br>16000 Nilüfer/Bursa</div>
                                 </div>
                             </div>
                             <div class="location-row">
                                 <div class="location-icon">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                        <path
+                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                     </svg>
                                 </div>
                                 <div class="location-content">
                                     <div class="label">WhatsApp</div>
-                                    <div class="value"><a href="https://wa.me/905551823776" target="_blank">0555 182 37 76</a></div>
+                                    <div class="value"><a href="https://wa.me/905551823776" target="_blank">0555 182 37
+                                            76</a></div>
                                 </div>
                             </div>
                             <div class="location-row">
                                 <div class="location-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                        <polyline points="22,6 12,13 2,6"/>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
                                     </svg>
                                 </div>
                                 <div class="location-content">
                                     <div class="label">E-posta</div>
-                                    <div class="value"><a href="mailto:aryaterzim@gmail.com">aryaterzim@gmail.com</a></div>
+                                    <div class="value"><a href="mailto:aryaterzim@gmail.com">aryaterzim@gmail.com</a>
+                                    </div>
                                 </div>
                             </div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=G%C3%96R%C3%9CKLE+ARYA+TERZ%C4%B0+KURU+TEM%C4%B0ZLEME+G%C3%B6r%C3%BCkle+Atat%C3%BCrk+Cd.+yerle%C5%9Fim+sokak+i%C5%9F+merkezi+han%C4%B1+no%2F+43+16000+Ni%CC%87l%C3%BCfer%2FBursa" target="_blank" class="btn-map">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
+                            <a href="https://www.google.com/maps/search/?api=1&query=G%C3%96R%C3%9CKLE+ARYA+TERZ%C4%B0+KURU+TEM%C4%B0ZLEME+G%C3%B6r%C3%BCkle+Atat%C3%BCrk+Cd.+yerle%C5%9Fim+sokak+i%C5%9F+merkezi+han%C4%B1+no%2F+43+16000+Ni%CC%87l%C3%BCfer%2FBursa"
+                                target="_blank" class="btn-map">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
                                 </svg>
                                 Google Maps'te Aç
                             </a>
@@ -1889,14 +2146,14 @@
     </div>
 
     <!-- ADMIN LOGIN MODAL -->
-    <div class="modal-overlay admin-modal" id="adminLoginModal" onclick="closeModalOnBackdrop(event, 'adminLoginModal')">
+    <div class="modal-overlay admin-modal" id="adminLoginModal" onclick="if(event.target === this) closeAdminLogin();">
         <div class="modal" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <h2 class="modal-title">🔐 Admin Girişi</h2>
                 <button class="modal-close" onclick="closeAdminLogin()">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                 </button>
             </div>
@@ -1908,15 +2165,17 @@
                         <input type="password" id="adminPassword" class="form-input" required placeholder="••••••">
                     </div>
                     <button type="submit" class="btn-submit">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                         </svg>
                         Giriş Yap
                     </button>
                 </form>
                 <div style="text-align: center; margin-top: 1rem;">
-                    <button type="button" onclick="showPasswordHint()" style="background: none; border: none; color: var(--text-muted); font-size: 0.8rem; cursor: pointer; text-decoration: underline;">
+                    <button type="button" onclick="showPasswordHint()"
+                        style="background: none; border: none; color: var(--text-muted); font-size: 0.8rem; cursor: pointer; text-decoration: underline;">
                         Şifremi Unuttum
                     </button>
                     <div id="passwordHint" class="password-hint"></div>
@@ -1926,7 +2185,7 @@
     </div>
 
     <!-- ADMIN PANEL MODAL -->
-    <div class="modal-overlay admin-panel" id="adminPanelModal" onclick="closeModalOnBackdrop(event, 'adminPanelModal')">
+    <div class="modal-overlay admin-panel" id="adminPanelModal" onclick="if(event.target === this) closeAdminPanel();">
         <div class="modal" onclick="event.stopPropagation()" style="max-width: 1100px;">
             <div class="modal-header">
                 <div style="display: flex; align-items: center; gap: 1rem;">
@@ -1934,13 +2193,15 @@
                     <span style="color: var(--text-muted); font-size: 0.875rem;" id="totalAppointmentsCount"></span>
                 </div>
                 <div style="display: flex; gap: 0.75rem;">
-                    <button class="btn-cta" onclick="refreshAdminPanel()" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
+                    <button class="btn-cta" onclick="refreshAdminPanel()"
+                        style="font-size: 0.8rem; padding: 0.5rem 1rem;">
                         🔄 Yenile
                     </button>
                     <button class="modal-close" onclick="closeAdminPanel()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
                         </svg>
                     </button>
                 </div>
@@ -1951,10 +2212,12 @@
                     <select id="adminFilterService" class="form-select">
                         <option value="">Tüm Hizmetler</option>
                     </select>
-                    <button onclick="filterAdminAppointments()" class="btn-submit" style="width: auto; padding: 0.75rem 1.5rem;">
+                    <button onclick="filterAdminAppointments()" class="btn-submit"
+                        style="width: auto; padding: 0.75rem 1.5rem;">
                         🔍 Filtrele
                     </button>
-                    <button onclick="clearAdminFilters()" class="btn-submit" style="width: auto; padding: 0.75rem 1.5rem; background: var(--bg-tertiary); color: var(--text-primary);">
+                    <button onclick="clearAdminFilters()" class="btn-submit"
+                        style="width: auto; padding: 0.75rem 1.5rem; background: var(--bg-tertiary); color: var(--text-primary);">
                         Temizle
                     </button>
                 </div>
@@ -1983,38 +2246,61 @@
         </div>
     </div>
 
-<script>
-        // ========== BASIT ÇALIŞAN VERSIYON ==========
-        
+    <script>
+        // ========== FIXED VERSION ==========
+
         // Config
         const CONFIG = {
-            STORAGE_KEY: 'arya_terzi_randevular_v6',
-            ADMIN_KEY: 'arya_terzi_admin_v2',
+            STORAGE_KEY: 'arya_terzi_randevular_v7',
             TIME_SLOTS: ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00'],
             SERVICES: {
                 'pantolon-tadilat': 'Pantolon Tadilatı', 'gomlek-tadilat': 'Gömlek Tadilatı', 'ceket-tadilat': 'Ceket/Takım Elbise',
                 'elbise-tadilat': 'Elbise Tadilatı', 'fermuar-degisim': 'Fermuar Değişimi', 'astar-degisim': 'Astar Değişimi',
-                'dugme-dikimi': 'Düğme Dikimi', 'yirtik-tamiri': 'Yırtık Tamiri', 'ozel-dikim': 'Özel Dikim',
+                'dugme-kayip': 'Düğme Dikimi', 'yirtik-tamiri': 'Yırtık Tamiri', 'ozel-dikim': 'Özel Dikim',
                 'gelinlik-mod': 'Gelinlik Modifikasyonu', 'kuru-temizleme': 'Kuru Temizleme', 'yikama': 'Yıkama',
                 'utu': 'Ütü', 'yikama-utu': 'Yıkama + Ütü', 'leke-cikarma': 'Leke Çıkarma', 'perde-yorgan': 'Perde/Yorgan',
-                'gelinlik-temizleme': 'Gelinlik Temizleme', 'deri-temizleme': 'Deri/Süet Temizleme', 'kumas-boyama': 'Kumaş Boyama',
+                'gelinlik-temizleme': 'Gelinlik Temizleme', 'deri-suet': 'Deri/Süet Temizleme', 'kumas-boyama': 'Kumaş Boyama',
                 'nakis-isleme': 'Nakış İşleme', 'danismanlik': 'Kumaş Danışmanlığı'
             }
         };
 
-        // Storage functions
+        // XSS Protection: HTML escaping
+        function escapeHtml(text) {
+            if (text === null || text === undefined) return '';
+            const div = document.createElement('div');
+            div.textContent = String(text);
+            return div.innerHTML;
+        }
+
+        // Input sanitization
+        function sanitizePhone(phone) {
+            return phone.replace(/\D/g, '').slice(0, 4);
+        }
+
+        // Storage functions with error handling
         function getAppointments() {
-            const data = localStorage.getItem(CONFIG.STORAGE_KEY);
-            return data ? JSON.parse(data) : [];
+            try {
+                const data = localStorage.getItem(CONFIG.STORAGE_KEY);
+                return data ? JSON.parse(data) : [];
+            } catch (e) {
+                console.error('Storage read error:', e);
+                return [];
+            }
         }
 
         function saveAppointments(data) {
-            localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+            try {
+                localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+                return true;
+            } catch (e) {
+                console.error('Storage write error:', e);
+                return false;
+            }
         }
 
         // Format functions
         function formatDate(dateStr) {
-            const date = new Date(dateStr);
+            const date = new Date(dateStr + 'T00:00:00');
             return date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
         }
 
@@ -2023,7 +2309,8 @@
         }
 
         function getToday() {
-            return new Date().toISOString().split('T')[0];
+            const now = new Date();
+            return now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
         }
 
         // Status
@@ -2031,10 +2318,10 @@
             const now = new Date();
             const day = now.getDay();
             const hour = now.getHours();
-            
+
             let weekdayStatus = 'Kapalı';
             let sundayStatus = 'Kapalı';
-            
+
             if (day >= 1 && day <= 6) {
                 if (hour >= 10 && hour < 20) weekdayStatus = 'Açık';
                 else if (hour >= 20) weekdayStatus = 'Kapandı';
@@ -2043,14 +2330,22 @@
                 if (hour >= 13 && hour < 20) sundayStatus = 'Açık';
                 else if (hour >= 20) sundayStatus = 'Kapandı';
             }
-            
+
             const weekdayEl = document.getElementById('status-weekday');
             const sundayEl = document.getElementById('status-sunday');
-            if (weekdayEl) { weekdayEl.textContent = weekdayStatus; weekdayEl.className = 'hours-status ' + (weekdayStatus === 'Açık' ? 'open' : 'closed'); }
-            if (sundayEl) { sundayEl.textContent = sundayStatus; sundayEl.className = 'hours-status ' + (sundayStatus === 'Açık' ? 'open' : 'closed'); }
+            if (weekdayEl) {
+                weekdayEl.textContent = weekdayStatus;
+                weekdayEl.className = 'hours-status ' + (weekdayStatus === 'Açık' ? 'open' : 'closed');
+            }
+            if (sundayEl) {
+                sundayEl.textContent = sundayStatus;
+                sundayEl.className = 'hours-status ' + (sundayStatus === 'Açık' ? 'open' : 'closed');
+            }
         }
 
         // Modal functions
+        let timeSlotListenerAdded = false; // FIX: Memory leak prevention
+
         function openModal() {
             document.getElementById('modalOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -2063,114 +2358,145 @@
             document.body.style.overflow = '';
             document.getElementById('appointmentForm').reset();
             document.getElementById('formAlert').innerHTML = '';
+            document.getElementById('time').innerHTML = '<option value="">Önce tarih seçin</option>';
         }
 
-        function closeModalOnBackdrop(event, modalId) {
-            if (modalId === 'adminLoginModal') closeAdminLogin();
-            else if (modalId === 'adminPanelModal') closeAdminPanel();
-            else closeModal();
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') { closeModal(); closeAdminLogin(); closeAdminPanel(); }
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeAdminLogin();
+                closeAdminPanel();
+            }
         });
 
-        // Time slots
+        // Time slots - FIX: Only add listener once to prevent memory leak
         function updateTimeSlots() {
             const dateInput = document.getElementById('date');
             const timeSelect = document.getElementById('time');
+            if (!dateInput || !timeSelect) return;
+
             dateInput.min = getToday();
-            
-            dateInput.addEventListener('change', function() {
-                const selectedDate = this.value;
-                timeSelect.innerHTML = '<option value="">Saat seçiniz</option>';
-                
-                if (selectedDate) {
-                    const appointments = getAppointments();
-                    const bookedTimes = appointments.filter(a => a.date === selectedDate).map(a => a.time);
-                    
-                    CONFIG.TIME_SLOTS.forEach(time => {
-                        if (!bookedTimes.includes(time)) {
-                            const option = document.createElement('option');
-                            option.value = time;
-                            option.textContent = time;
-                            timeSelect.appendChild(option);
-                        }
-                    });
-                }
-            });
+
+            if (!timeSlotListenerAdded) {
+                dateInput.addEventListener('change', function () {
+                    const selectedDate = this.value;
+                    timeSelect.innerHTML = '<option value="">Saat seçiniz</option>';
+
+                    if (selectedDate) {
+                        const appointments = getAppointments();
+                        const bookedTimes = appointments.filter(a => a.date === selectedDate).map(a => a.time);
+
+                        CONFIG.TIME_SLOTS.forEach(time => {
+                            if (!bookedTimes.includes(time)) {
+                                const option = document.createElement('option');
+                                option.value = time;
+                                option.textContent = time;
+                                timeSelect.appendChild(option);
+                            }
+                        });
+                    }
+                });
+                timeSlotListenerAdded = true;
+            }
         }
 
-        // Form submit
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Form submit with XSS protection
+        document.getElementById('appointmentForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const firstName = document.getElementById('firstName').value.trim();
             const lastName = document.getElementById('lastName').value.trim().toUpperCase();
-            const phone = document.getElementById('phone').value.trim();
+            const phone = sanitizePhone(document.getElementById('phone').value);
             const email = document.getElementById('email').value.trim();
             const service = document.getElementById('service').value;
             const date = document.getElementById('date').value;
             const time = document.getElementById('time').value;
             const notes = document.getElementById('notes').value.trim().substring(0, 300);
-            
+
             if (!firstName || !lastName || !phone || !email || !service || !date || !time) {
                 document.getElementById('formAlert').innerHTML = '<div class="form-alert error">Tüm alanları doldurunuz</div>';
                 return;
             }
-            
+
             if (!/^\d{4}$/.test(phone)) {
                 document.getElementById('formAlert').innerHTML = '<div class="form-alert error">Telefon 4 haneli olmalı</div>';
                 return;
             }
-            
+
             const appointments = getAppointments();
             const conflict = appointments.some(a => a.date === date && a.time === time);
             if (conflict) {
                 document.getElementById('formAlert').innerHTML = '<div class="form-alert error">Bu saat dolu</div>';
                 return;
             }
-            
+
             appointments.push({
-                id: Date.now(), firstName, lastName, phone, email, service, date, time, notes,
-                createdAt: new Date().toISOString(), status: 'pending'
+                id: Date.now(),
+                firstName: escapeHtml(firstName),
+                lastName: escapeHtml(lastName),
+                phone: phone,
+                email: escapeHtml(email),
+                service: service,
+                date: date,
+                time: time,
+                notes: escapeHtml(notes),
+                createdAt: new Date().toISOString(),
+                status: 'pending'
             });
-            
+
             saveAppointments(appointments);
             document.getElementById('formAlert').innerHTML = '<div class="form-alert success">Randevunuz oluşturuldu!</div>';
             document.getElementById('appointmentForm').reset();
             document.getElementById('time').innerHTML = '<option value="">Önce tarih seçin</option>';
+
+            setTimeout(() => {
+                document.getElementById('formAlert').innerHTML = '';
+            }, 3000);
         });
 
-        // Search
-        document.getElementById('searchBtn').addEventListener('click', function() {
-            const phone = document.getElementById('searchPhone').value.trim();
-            if (!phone) return;
-            
+        // Search with XSS protection
+        document.getElementById('searchBtn').addEventListener('click', function () {
+            const phoneInput = document.getElementById('searchPhone');
+            const phone = sanitizePhone(phoneInput.value);
+
+            if (!phone || phone.length !== 4) {
+                document.getElementById('appointmentsList').innerHTML = '<div class="no-appointments">Lütfen son 4 haneli telefon numarası girin</div>';
+                return;
+            }
+
             const found = getAppointments().filter(a => a.phone.includes(phone));
             const listEl = document.getElementById('appointmentsList');
-            
+
             if (found.length === 0) {
                 listEl.innerHTML = '<div class="no-appointments">Randevu bulunamadı</div>';
             } else {
-                listEl.innerHTML = found.map(a => `
-                    <div class="appointment-item">
-                        <div class="appointment-header">
-                            <span class="appointment-date">${formatDateTime(a.date, a.time)}</span>
-                            <span class="appointment-status">${CONFIG.SERVICES[a.service] || a.service}</span>
-                        </div>
-                        <div class="appointment-service">${a.firstName} ${a.lastName}</div>
-                        ${a.notes ? '<div class="appointment-notes">Not: ' + a.notes + '</div>' : ''}
-                    </div>
-                `).join('');
+                // FIX: Use escapeHtml for all user-generated content
+                listEl.innerHTML = found.map(a =>
+                    '<div class="appointment-item">' +
+                    '<div class="appointment-header">' +
+                    '<span class="appointment-date">' + escapeHtml(formatDateTime(a.date, a.time)) + '</span>' +
+                    '<span class="appointment-status">' + escapeHtml(CONFIG.SERVICES[a.service] || a.service) + '</span>' +
+                    '</div>' +
+                    '<div class="appointment-service">' + escapeHtml(a.firstName) + ' ' + escapeHtml(a.lastName) + '</div>' +
+                    (a.notes ? '<div class="appointment-notes">Not: ' + escapeHtml(a.notes) + '</div>' : '') +
+                    '</div>'
+                ).join('');
             }
         });
 
-        document.getElementById('searchPhone').addEventListener('keypress', function(e) {
+        document.getElementById('searchPhone').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') document.getElementById('searchBtn').click();
         });
 
         // Admin
+        const ADMIN_PASSWORD_HASH = '398908'; // NOTE: In production, use proper server-side auth
+
         function openAdminLogin() {
             closeModal();
             document.getElementById('adminLoginModal').classList.add('active');
@@ -2182,15 +2508,26 @@
             document.body.style.overflow = '';
         }
 
-        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+        document.getElementById('adminLoginForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            if (document.getElementById('adminPassword').value === '398908') {
+            if (document.getElementById('adminPassword').value === ADMIN_PASSWORD_HASH) {
                 closeAdminLogin();
                 openAdminPanel();
+                document.getElementById('adminPassword').value = '';
             } else {
                 document.getElementById('adminLoginAlert').innerHTML = '<div class="admin-login-alert error">Şifre yanlış</div>';
+                setTimeout(() => {
+                    document.getElementById('adminLoginAlert').innerHTML = '';
+                }, 3000);
             }
         });
+
+        function showPasswordHint() {
+            const hintDiv = document.getElementById('passwordHint');
+            hintDiv.textContent = 'İpucu: Şifre 6 karakterden oluşur';
+            hintDiv.classList.add('show');
+            setTimeout(() => hintDiv.classList.remove('show'), 5000);
+        }
 
         function openAdminPanel() {
             document.getElementById('adminPanelModal').classList.add('active');
@@ -2203,10 +2540,16 @@
             document.body.style.overflow = '';
         }
 
+        function refreshAdminPanel() {
+            loadAdminAppointments();
+        }
+
         function loadAdminAppointments() {
-            const appointments = getAppointments().sort((a, b) => new Date(b.date + 'T' + b.time) - new Date(a.date + 'T' + a.time));
+            const appointments = getAppointments().sort((a, b) =>
+                new Date(b.date + 'T' + b.time) - new Date(a.date + 'T' + a.time)
+            );
             document.getElementById('totalAppointmentsCount').textContent = appointments.length + ' randevu';
-            
+
             const serviceSelect = document.getElementById('adminFilterService');
             serviceSelect.innerHTML = '<option value="">Tüm Hizmetler</option>';
             Object.keys(CONFIG.SERVICES).forEach(key => {
@@ -2215,19 +2558,29 @@
                 option.textContent = CONFIG.SERVICES[key];
                 serviceSelect.appendChild(option);
             });
-            
+
             renderAdminTable(appointments);
         }
 
         function renderAdminTable(appointments) {
             const tbody = document.getElementById('adminAppointmentsTable');
             const noData = document.getElementById('adminNoData');
-            if (appointments.length === 0) { tbody.innerHTML = ''; noData.style.display = 'block'; return; }
+            if (appointments.length === 0) {
+                tbody.innerHTML = '';
+                noData.style.display = 'block';
+                return;
+            }
             noData.style.display = 'none';
-            tbody.innerHTML = appointments.map(a => 
-                '<tr><td>' + formatDateTime(a.date, a.time) + '</td><td>' + a.firstName + ' ' + a.lastName + 
-                '</td><td>' + a.phone + '</td><td>' + (CONFIG.SERVICES[a.service] || a.service) + 
-                '</td><td>' + (a.notes || '-') + '</td><td><button class="btn-admin-action btn-delete" onclick="deleteAppointment(' + a.id + ')">Sil</button></td></tr>'
+            // FIX: Use escapeHtml for all user content
+            tbody.innerHTML = appointments.map(a =>
+                '<tr>' +
+                '<td>' + escapeHtml(formatDateTime(a.date, a.time)) + '</td>' +
+                '<td>' + escapeHtml(a.firstName) + ' ' + escapeHtml(a.lastName) + '</td>' +
+                '<td>*** *** ' + escapeHtml(a.phone) + '</td>' +
+                '<td>' + escapeHtml(CONFIG.SERVICES[a.service] || a.service) + '</td>' +
+                '<td>' + (a.notes ? escapeHtml(a.notes) : '-') + '</td>' +
+                '<td><button class="btn-admin-action btn-delete" onclick="deleteAppointment(' + a.id + ')">Sil</button></td>' +
+                '</tr>'
             ).join('');
         }
 
@@ -2244,7 +2597,9 @@
             const serviceFilter = document.getElementById('adminFilterService').value;
             if (dateFilter) appointments = appointments.filter(a => a.date === dateFilter);
             if (serviceFilter) appointments = appointments.filter(a => a.service === serviceFilter);
-            renderAdminTable(appointments.sort((a, b) => new Date(b.date + 'T' + b.time) - new Date(a.date + 'T' + a.time)));
+            renderAdminTable(appointments.sort((a, b) =>
+                new Date(b.date + 'T' + b.time) - new Date(a.date + 'T' + a.time)
+            ));
         }
 
         function clearAdminFilters() {
@@ -2254,7 +2609,7 @@
         }
 
         // Header scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.getElementById('header');
             if (window.scrollY > 50) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
@@ -2264,4 +2619,5 @@
         updateStatusDisplay();
     </script>
 </body>
+
 </html>
