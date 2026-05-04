@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arya Terzi — Kuru Temizleme & Terzi Hizmetleri | Nilüfer / Bursa</title>
+    <meta name="description" content="Görükle'de profesyonel kuru temizleme ve terzi hizmetleri. Pantolon tadilat, gömlek dikim, elbise, gelinlik ve özel dikim. 0555 182 3776">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #141618;
+            --bg-tertiary: #1a1c20;
+            --bg-card: #1e2026;
+            --accent-gold: #c9a227;
+            --accent-gold-light: #e8c75a;
+            --accent-gold-dark: #a68520;
+            --accent-gold-glow: rgba(201, 162, 39, 0.15);
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --error: #ef4444;
+            --success: #22c55e;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0c 0%, #0d0d10 25%, #12141a 50%, #0a0a0c 75%, #141618 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            background-attachment: fixed;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'DM Sans', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        input, select, textarea {
+            font-family: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 2rem;
+            background: linear-gradient(to bottom, rgba(8, 8, 8, 0.98) 0%, rgba(8, 8, 8, 0.85) 60%, transparent 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: background 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(8, 8, 8, 0.98);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-gold) 50%, var(--text-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .header-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: width 0.3s var(--ease-out-expo);
+        }
+
+        .header-link:hover {
+            color: var(--text-primary);
+        }
+
+        .header-link:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            background: linear-gradient(135deg, #25D366 0%, #20BD5A 100%);
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-cta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+            color: var(--bg-primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-admin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .btn-admin:hover {
+            background: var(--bg-card);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            transform: scale(1.1);
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1.1); }
+            to { transform: scale(1.15); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(8, 8, 8, 0.92) 0%,
+                rgba(8, 8, 8, 0.75) 50%,
+                rgba(8, 8, 8, 0.85) 100%
+            );
+        }
+
+        .hero-noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.2s both;
+        }
+
+        .hero-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.2s both;
+        }
+
+        .hero-brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-gold) 50%, var(--text-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.4);
+            line-height: 1;
+        }
+
+        .hero-brand-tagline {
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.4s both;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.6s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.8s both;
+        }
+
+        .btn-hero-primary {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+            color: var(--bg-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.4s var(--ease-out-expo);
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hero-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(201, 162, 39, 0.45);
+        }
+
+        .btn-hero-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-hero-secondary {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 1px solid var(--border-hover);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-gold);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 1s both;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.5; height: 40px; }
+            50% { opacity: 1; height: 50px; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== SERVICES SECTION ========== */
+        .services {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, #141618 0%, #1a1c20 50%, #141618 100%);
+            background-size: 100% 200%;
+            animation: sectionFlow 8s ease infinite;
+            position: relative;
+        }
+
+        @keyframes sectionFlow {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 0% 100%; }
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+            transform: scaleX(0);
+            transition: transform 0.4s var(--ease-out-expo);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-accent {
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+            border-radius: 2px;
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+
+        .service-accent::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+        }
+
+        .service-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========== INFO SECTION ========== */
+        .info-section {
+            padding: 4rem 0;
+            background: var(--bg-primary);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s var(--ease-out-expo);
+            cursor: pointer;
+        }
+
+        .info-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 30px var(--accent-gold-glow);
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gold-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .info-text .highlight {
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        /* ========== MODAL ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow: hidden;
+            transform: scale(0.95) translateY(20px);
+            transition: transform 0.4s var(--ease-out-expo);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-tertiary);
+        }
+
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== FORM STYLES ========== */
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 0.875rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px var(--accent-gold-glow);
+        }
+
+        .form-input.error,
+        .form-select.error {
+            border-color: var(--error);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2371717a' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .form-select option {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+            color: var(--bg-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .form-alert.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .form-alert.error {
+            display: block;
+            background: var(--error-bg);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        /* ========== HOURS BAR ========== */
+        .hours-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hours-item {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .hours-item h4 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .hours-item p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .hours-status {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        .hours-status.open {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--success);
+        }
+
+        .hours-status.closed {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+
+        /* ========== LOCATION BOX ========== */
+        .location-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .location-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem 0;
+        }
+
+        .location-row:not(:last-child) {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .location-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gold-glow);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .location-content .label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .location-content .value {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .location-content a {
+            color: var(--accent-gold);
+            transition: opacity 0.2s ease;
+        }
+
+        .location-content a:hover {
+            opacity: 0.8;
+        }
+
+        .btn-map {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            background: var(--accent-gold-glow);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 10px;
+            width: 100%;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-map:hover {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        /* ========== APPOINTMENTS LIST ========== */
+        .appointments-list {
+            margin-top: 1rem;
+        }
+
+        .appointment-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .appointment-item:hover {
+            border-color: var(--border-hover);
+        }
+
+        .appointment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .appointment-date {
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .appointment-status {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background: var(--accent-gold-glow);
+            color: var(--accent-gold);
+        }
+
+        .appointment-service {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .appointment-notes {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .no-appointments {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: 3rem 0;
+            background: linear-gradient(180deg, #141618 0%, #1a1c20 100%);
+            background-size: 100% 150%;
+            animation: footerFlow 10s ease infinite;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        @keyframes footerFlow {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 0% 100%; }
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer-brand {
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        /* ========== ADMIN MODAL ========== */
+        .admin-modal .modal {
+            max-width: 450px;
+        }
+
+        .admin-login-alert {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .admin-login-alert.error {
+            display: block;
+            background: var(--error-bg);
+            color: var(--error);
+        }
+
+        .password-hint {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .password-hint.show {
+            display: block;
+        }
+
+        /* ========== ADMIN PANEL ========== */
+        .admin-panel .modal {
+            max-width: 1100px;
+        }
+
+        .admin-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .admin-filters input,
+        .admin-filters select {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .admin-table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .admin-table th {
+            background: var(--bg-tertiary);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--accent-gold);
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .admin-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        .admin-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .admin-table tr:hover td {
+            background: var(--bg-card);
+        }
+
+        .admin-empty {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-admin-action {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.8rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-complete {
+            background: var(--success-bg);
+            color: var(--success);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .btn-complete:hover {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-delete {
+            background: var(--error-bg);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-delete:hover {
+            background: var(--error);
+            color: white;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .header-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .btn-hero-primary,
+            .btn-hero-secondary {
+                padding: 0.875rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .services {
+                padding: 4rem 0;
+            }
+
+            .modal {
+                max-height: 95vh;
+                border-radius: 16px;
+            }
+
+            .modal-header {
+                padding: 1rem 1.25rem;
+            }
+
+            .modal-body {
+                padding: 1.25rem;
+            }
+        }
+
+        /* ========== ANIMATIONS ========== */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
+        }
+
+        /* ========== SCROLLBAR ========== */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-hover);
+        }
+
+        /* ========== TOAST NOTIFICATIONS ========== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .toast-error {
+            background: var(--error);
+            color: white;
+        }
+
+        .toast-info {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        /* ========== LOADING STATES ========== */
+        .btn-submit[data-loading="true"] {
+            position: relative;
+            color: transparent;
+            pointer-events: none;
+        }
+
+        .btn-submit[data-loading="true"]::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top-color: var(--bg-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ========== ACCESSIBILITY ========== */
+        :focus-visible {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ========== PREFERS REDUCED MOTION ========== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ========== HIGH CONTRAST MODE ========== */
+        @media (prefers-contrast: high) {
+            :root {
+                --border: rgba(255, 255, 255, 0.2);
+                --text-secondary: #d4d4d8;
+            }
+        }
+
+        /* ========== TOUCH OPTIMIZATION ========== */
+        @media (hover: none) and (pointer: coarse) {
+            .btn-submit, .btn-cta, .btn-whatsapp {
+                min-height: 48px;
+            }
+
+            .form-input, .form-select, .form-textarea {
+                min-height: 48px;
+            }
+        }
+
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            .header, .hero, .services, .info-section, .modal-overlay, .footer {
+                background: white !important;
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <nav class="header-nav">
+                <a href="#services" class="header-link">Hizmetler</a>
+                <a href="#contact" class="header-link">İletişim</a>
+                <a href="#" class="header-link" onclick="openModal(); return false;">Randevu</a>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/905551823776" class="btn-whatsapp" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    WhatsApp
+                </a>
+                <button class="btn-cta" onclick="openModal()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    Randevu
+                </button>
+                <button onclick="openAdminLogin()" class="btn-admin" title="Admin">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                </button>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="indir.png" alt="Arya Terzi Kuru Temizleme" onerror="this.style.display='none'">
+            <div class="hero-overlay"></div>
+            <div class="hero-noise"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                Görükle, Nilüfer / Bursa
+            </div>
+            <div class="hero-brand">
+                <span class="hero-brand-name">ARYA TERZİ</span>
+                <span class="hero-brand-tagline">Kuru Temizleme & Terzi</span>
+            </div>
+            <h1 class="hero-title">
+                Ustalıkla <span class="highlight">İşlenir</span>
+            </h1>
+            <p class="hero-subtitle">
+                Görükle'de profesyonel kuru temizleme ve terzi hizmetleri. 
+                Her dikişte mükemmellik, her temizlikte profesyonellik.
+            </p>
+            <div class="hero-cta">
+                <button class="btn-hero-primary" onclick="openModal()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    Randevu Al
+                </button>
+                <a href="https://wa.me/905551823776" class="btn-hero-secondary" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Keşfet</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Hizmetlerimiz</span>
+                <h2 class="section-title">Profesyonel Çözümler</h2>
+                <p class="section-subtitle">Görükle'de kuru temizleme ve terzi hizmetlerinin tek adresi</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in stagger-1">
+                    <div class="service-accent"></div>
+                    <h3 class="service-title">Terzi Hizmetleri</h3>
+                    <p class="service-desc">Pantolon, gömlek, ceket, elbise tadilatları. Fermuar değişimi, düğme dikimi, özel dikim ve restorasyon.</p>
+                </div>
+                <div class="service-card fade-in stagger-2">
+                    <div class="service-accent"></div>
+                    <h3 class="service-title">Kuru Temizleme</h3>
+                    <p class="service-desc">Gelinlik, abiye, takım elbise, mont ve kaban temizleme. Özel kumaşlar ve değerli giysiler.</p>
+                </div>
+                <div class="service-card fade-in stagger-3">
+                    <div class="service-accent"></div>
+                    <h3 class="service-title">Yıkama & Ütü</h3>
+                    <p class="service-desc">Profesyonel yıkama, ütüleme ve yıkama+ütü paketleri. Perde, nevresim ve battaniye yıkama.</p>
+                </div>
+                <div class="service-card fade-in stagger-4">
+                    <div class="service-accent"></div>
+                    <h3 class="service-title">Kumaş İşlemleri</h3>
+                    <p class="service-desc">Kumaş boyama, renk değiştirme, nakış işleme, patch tamiri ve kumaş restorasyonu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO / CONTACT -->
+    <section class="info-section" id="contact">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card" onclick="openModal()">
+                    <div class="info-icon">🕐</div>
+                    <h3 class="info-title">Çalışma Saatleri</h3>
+                    <p class="info-text">
+                        <span class="highlight">Pazartesi - Cumartesi:</span> 10:00 - 20:00<br>
+                        <span class="highlight">Pazar:</span> 13:00 - 20:00
+                    </p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <h3 class="info-title">Adres</h3>
+                    <p class="info-text">
+                        Görükle, Atatürk Cd. yerleşim sokak iş merkezi hanı no/ 43<br>
+                        <span class="highlight">16000 Nilüfer / Bursa</span>
+                    </p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📱</div>
+                    <h3 class="info-title">İletişim</h3>
+                    <p class="info-text">
+                        <a href="https://wa.me/905551823776" target="_blank" rel="noopener" class="highlight">WhatsApp: 0555 182 37 76</a><br>
+                        <a href="mailto:aryaterzim@gmail.com" class="highlight">aryaterzim@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2024 <span class="footer-brand">Arya Terzi Kuru Temizleme</span> — Görükle, Atatürk Cd. yerleşim sokak iş merkezi hanı no/ 43, Nilüfer/Bursa
+            </p>
+        </div>
+    </footer>
+
+    <!-- APPOINTMENT MODAL -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBackdrop(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 class="modal-title">Randevu Al</h2>
+                <button class="modal-close" onclick="closeModal()" aria-label="Kapat">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="hours-bar">
+                    <div class="hours-item">
+                        <h4>Pazartesi — Cumartesi</h4>
+                        <p>10:00 — 20:00</p>
+                        <span class="hours-status open" id="status-weekday">Açık</span>
+                    </div>
+                    <div class="hours-item">
+                        <h4>Pazar Günü</h4>
+                        <p>13:00 — 20:00</p>
+                        <span class="hours-status open" id="status-sunday">Açık</span>
+                    </div>
+                </div>
+
+                <div class="modal-grid">
+                    <!-- New Appointment -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">📅 Yeni Randevu</h3>
+                        <div id="formAlert"></div>
+
+                        <form id="appointmentForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="firstName">İsim</label>
+                                    <input type="text" id="firstName" class="form-input" required placeholder="Adınız" maxlength="30">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="lastName">Soyad (Baş Harfi)</label>
+                                    <input type="text" id="lastName" class="form-input" required placeholder="B" maxlength="1" style="text-transform: uppercase;">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="phone">Telefon (Son 4 Hane)</label>
+                                    <input type="tel" id="phone" class="form-input" required placeholder="1234" maxlength="4">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="email">E-posta</label>
+                                    <input type="email" id="email" class="form-input" required placeholder="ornek@email.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="service">Hizmet Seçin</label>
+                                <select id="service" class="form-select" required>
+                                    <option value="">Hizmet seçiniz</option>
+                                    <optgroup label="✂️ Terzi Hizmetleri">
+                                        <option value="pantolon-tadilat">Pantolon Tadilatı</option>
+                                        <option value="gomlek-tadilat">Gömlek Tadilatı</option>
+                                        <option value="ceket-tadilat">Ceket/Takım Elbise</option>
+                                        <option value="elbise-tadilat">Elbise Tadilatı</option>
+                                        <option value="fermuar-degisim">Fermuar Değişimi</option>
+                                        <option value="astar-degisim">Astar Değişimi</option>
+                                        <option value="dugme-dikimi">Düğme Dikimi</option>
+                                        <option value="yirtik-tamiri">Yırtık Tamiri</option>
+                                        <option value="ozel-dikim">Özel Dikim</option>
+                                        <option value="gelinlik-mod">Gelinlik Modifikasyonu</option>
+                                    </optgroup>
+                                    <optgroup label="🧺 Kuru Temizleme">
+                                        <option value="kuru-temizleme">Kuru Temizleme</option>
+                                        <option value="yikama">Yıkama</option>
+                                        <option value="utu">Ütü</option>
+                                        <option value="yikama-utu">Yıkama + Ütü</option>
+                                        <option value="leke-cikarma">Leke Çıkarma</option>
+                                        <option value="perde-yorgan">Perde/Yorgan</option>
+                                        <option value="gelinlik-temizleme">Gelinlik Temizleme</option>
+                                        <option value="deri-temizleme">Deri/Süet Temizleme</option>
+                                    </optgroup>
+                                    <optgroup label="🎨 Diğer">
+                                        <option value="kumas-boyama">Kumaş Boyama</option>
+                                        <option value="nakis-isleme">Nakış İşleme</option>
+                                        <option value="danismanlik">Kumaş Danışmanlığı</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="date">Tarih</label>
+                                    <input type="date" id="date" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="time">Saat</label>
+                                    <select id="time" class="form-select" required>
+                                        <option value="">Önce tarih seçin</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="notes">Not (İsteğe Bağlı)</label>
+                                <textarea id="notes" class="form-textarea" placeholder="Randevu ile ilgili notlarınız..." maxlength="300"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                Randevu Oluştur
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- My Appointments -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">🔍 Randevularım</h3>
+
+                        <div class="form-group">
+                            <label class="form-label" for="searchPhone">Telefon (Son 4 Hane)</label>
+                            <input type="tel" id="searchPhone" class="form-input" placeholder="1234" maxlength="4">
+                        </div>
+
+                        <button id="searchBtn" class="btn-submit" style="margin-bottom: 1rem;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            Sorgula
+                        </button>
+
+                        <div id="appointmentsList"></div>
+
+                        <!-- Location -->
+                        <div class="location-box">
+                            <div class="location-row">
+                                <div class="location-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </div>
+                                <div class="location-content">
+                                    <div class="label">Adres</div>
+                                    <div class="value">Görükle, Atatürk Cd. yerleşim sokak iş merkezi hanı no/ 43<br>16000 Nilüfer/Bursa</div>
+                                </div>
+                            </div>
+                            <div class="location-row">
+                                <div class="location-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                    </svg>
+                                </div>
+                                <div class="location-content">
+                                    <div class="label">WhatsApp</div>
+                                    <div class="value"><a href="https://wa.me/905551823776" target="_blank">0555 182 37 76</a></div>
+                                </div>
+                            </div>
+                            <div class="location-row">
+                                <div class="location-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <div class="location-content">
+                                    <div class="label">E-posta</div>
+                                    <div class="value"><a href="mailto:aryaterzim@gmail.com">aryaterzim@gmail.com</a></div>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=G%C3%96R%C3%9CKLE+ARYA+TERZ%C4%B0+KURU+TEM%C4%B0ZLEME+G%C3%B6r%C3%BCkle+Atat%C3%BCrk+Cd.+yerle%C5%9Fim+sokak+i%C5%9F+merkezi+han%C4%B1+no%2F+43+16000+Ni%CC%87l%C3%BCfer%2FBursa" target="_blank" class="btn-map">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Google Maps'te Aç
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div class="modal-overlay admin-modal" id="adminLoginModal" onclick="closeModalOnBackdrop(event, 'adminLoginModal')">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 class="modal-title">🔐 Admin Girişi</h2>
+                <button class="modal-close" onclick="closeAdminLogin()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="adminLoginAlert"></div>
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label class="form-label" for="adminPassword">Şifre</label>
+                        <input type="password" id="adminPassword" class="form-input" required placeholder="••••••">
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        Giriş Yap
+                    </button>
+                </form>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button type="button" onclick="showPasswordHint()" style="background: none; border: none; color: var(--text-muted); font-size: 0.8rem; cursor: pointer; text-decoration: underline;">
+                        Şifremi Unuttum
+                    </button>
+                    <div id="passwordHint" class="password-hint"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL MODAL -->
+    <div class="modal-overlay admin-panel" id="adminPanelModal" onclick="closeModalOnBackdrop(event, 'adminPanelModal')">
+        <div class="modal" onclick="event.stopPropagation()" style="max-width: 1100px;">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <h2 class="modal-title">👑 Admin Paneli</h2>
+                    <span style="color: var(--text-muted); font-size: 0.875rem;" id="totalAppointmentsCount"></span>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                    <button class="btn-cta" onclick="refreshAdminPanel()" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
+                        🔄 Yenile
+                    </button>
+                    <button class="modal-close" onclick="closeAdminPanel()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="admin-filters">
+                    <input type="date" id="adminFilterDate" class="form-input">
+                    <select id="adminFilterService" class="form-select">
+                        <option value="">Tüm Hizmetler</option>
+                    </select>
+                    <button onclick="filterAdminAppointments()" class="btn-submit" style="width: auto; padding: 0.75rem 1.5rem;">
+                        🔍 Filtrele
+                    </button>
+                    <button onclick="clearAdminFilters()" class="btn-submit" style="width: auto; padding: 0.75rem 1.5rem; background: var(--bg-tertiary); color: var(--text-primary);">
+                        Temizle
+                    </button>
+                </div>
+
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Tarih & Saat</th>
+                                <th>Müşteri</th>
+                                <th>Telefon</th>
+                                <th>Hizmet</th>
+                                <th>Not</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminAppointmentsTable"></tbody>
+                    </table>
+                </div>
+
+                <div id="adminNoData" class="admin-empty" style="display: none;">
+                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">📋</div>
+                    <p>Randevu bulunamadı</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+        // ========== BASIT ÇALIŞAN VERSIYON ==========
+        
+        // Config
+        const CONFIG = {
+            STORAGE_KEY: 'arya_terzi_randevular_v6',
+            ADMIN_KEY: 'arya_terzi_admin_v2',
+            TIME_SLOTS: ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00'],
+            SERVICES: {
+                'pantolon-tadilat': 'Pantolon Tadilatı', 'gomlek-tadilat': 'Gömlek Tadilatı', 'ceket-tadilat': 'Ceket/Takım Elbise',
+                'elbise-tadilat': 'Elbise Tadilatı', 'fermuar-degisim': 'Fermuar Değişimi', 'astar-degisim': 'Astar Değişimi',
+                'dugme-dikimi': 'Düğme Dikimi', 'yirtik-tamiri': 'Yırtık Tamiri', 'ozel-dikim': 'Özel Dikim',
+                'gelinlik-mod': 'Gelinlik Modifikasyonu', 'kuru-temizleme': 'Kuru Temizleme', 'yikama': 'Yıkama',
+                'utu': 'Ütü', 'yikama-utu': 'Yıkama + Ütü', 'leke-cikarma': 'Leke Çıkarma', 'perde-yorgan': 'Perde/Yorgan',
+                'gelinlik-temizleme': 'Gelinlik Temizleme', 'deri-temizleme': 'Deri/Süet Temizleme', 'kumas-boyama': 'Kumaş Boyama',
+                'nakis-isleme': 'Nakış İşleme', 'danismanlik': 'Kumaş Danışmanlığı'
+            }
+        };
+
+        // Storage functions
+        function getAppointments() {
+            const data = localStorage.getItem(CONFIG.STORAGE_KEY);
+            return data ? JSON.parse(data) : [];
+        }
+
+        function saveAppointments(data) {
+            localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+        }
+
+        // Format functions
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
+        function formatDateTime(dateStr, time) {
+            return formatDate(dateStr) + ' - ' + time;
+        }
+
+        function getToday() {
+            return new Date().toISOString().split('T')[0];
+        }
+
+        // Status
+        function updateStatusDisplay() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            
+            let weekdayStatus = 'Kapalı';
+            let sundayStatus = 'Kapalı';
+            
+            if (day >= 1 && day <= 6) {
+                if (hour >= 10 && hour < 20) weekdayStatus = 'Açık';
+                else if (hour >= 20) weekdayStatus = 'Kapandı';
+            }
+            if (day === 0) {
+                if (hour >= 13 && hour < 20) sundayStatus = 'Açık';
+                else if (hour >= 20) sundayStatus = 'Kapandı';
+            }
+            
+            const weekdayEl = document.getElementById('status-weekday');
+            const sundayEl = document.getElementById('status-sunday');
+            if (weekdayEl) { weekdayEl.textContent = weekdayStatus; weekdayEl.className = 'hours-status ' + (weekdayStatus === 'Açık' ? 'open' : 'closed'); }
+            if (sundayEl) { sundayEl.textContent = sundayStatus; sundayEl.className = 'hours-status ' + (sundayStatus === 'Açık' ? 'open' : 'closed'); }
+        }
+
+        // Modal functions
+        function openModal() {
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateTimeSlots();
+            updateStatusDisplay();
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+            document.getElementById('appointmentForm').reset();
+            document.getElementById('formAlert').innerHTML = '';
+        }
+
+        function closeModalOnBackdrop(event, modalId) {
+            if (modalId === 'adminLoginModal') closeAdminLogin();
+            else if (modalId === 'adminPanelModal') closeAdminPanel();
+            else closeModal();
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') { closeModal(); closeAdminLogin(); closeAdminPanel(); }
+        });
+
+        // Time slots
+        function updateTimeSlots() {
+            const dateInput = document.getElementById('date');
+            const timeSelect = document.getElementById('time');
+            dateInput.min = getToday();
+            
+            dateInput.addEventListener('change', function() {
+                const selectedDate = this.value;
+                timeSelect.innerHTML = '<option value="">Saat seçiniz</option>';
+                
+                if (selectedDate) {
+                    const appointments = getAppointments();
+                    const bookedTimes = appointments.filter(a => a.date === selectedDate).map(a => a.time);
+                    
+                    CONFIG.TIME_SLOTS.forEach(time => {
+                        if (!bookedTimes.includes(time)) {
+                            const option = document.createElement('option');
+                            option.value = time;
+                            option.textContent = time;
+                            timeSelect.appendChild(option);
+                        }
+                    });
+                }
+            });
+        }
+
+        // Form submit
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim().toUpperCase();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const notes = document.getElementById('notes').value.trim().substring(0, 300);
+            
+            if (!firstName || !lastName || !phone || !email || !service || !date || !time) {
+                document.getElementById('formAlert').innerHTML = '<div class="form-alert error">Tüm alanları doldurunuz</div>';
+                return;
+            }
+            
+            if (!/^\d{4}$/.test(phone)) {
+                document.getElementById('formAlert').innerHTML = '<div class="form-alert error">Telefon 4 haneli olmalı</div>';
+                return;
+            }
+            
+            const appointments = getAppointments();
+            const conflict = appointments.some(a => a.date === date && a.time === time);
+            if (conflict) {
+                document.getElementById('formAlert').innerHTML = '<div class="form-alert error">Bu saat dolu</div>';
+                return;
+            }
+            
+            appointments.push({
+                id: Date.now(), firstName, lastName, phone, email, service, date, time, notes,
+                createdAt: new Date().toISOString(), status: 'pending'
+            });
+            
+            saveAppointments(appointments);
+            document.getElementById('formAlert').innerHTML = '<div class="form-alert success">Randevunuz oluşturuldu!</div>';
+            document.getElementById('appointmentForm').reset();
+            document.getElementById('time').innerHTML = '<option value="">Önce tarih seçin</option>';
+        });
+
+        // Search
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const phone = document.getElementById('searchPhone').value.trim();
+            if (!phone) return;
+            
+            const found = getAppointments().filter(a => a.phone.includes(phone));
+            const listEl = document.getElementById('appointmentsList');
+            
+            if (found.length === 0) {
+                listEl.innerHTML = '<div class="no-appointments">Randevu bulunamadı</div>';
+            } else {
+                listEl.innerHTML = found.map(a => `
+                    <div class="appointment-item">
+                        <div class="appointment-header">
+                            <span class="appointment-date">${formatDateTime(a.date, a.time)}</span>
+                            <span class="appointment-status">${CONFIG.SERVICES[a.service] || a.service}</span>
+                        </div>
+                        <div class="appointment-service">${a.firstName} ${a.lastName}</div>
+                        ${a.notes ? '<div class="appointment-notes">Not: ' + a.notes + '</div>' : ''}
+                    </div>
+                `).join('');
+            }
+        });
+
+        document.getElementById('searchPhone').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') document.getElementById('searchBtn').click();
+        });
+
+        // Admin
+        function openAdminLogin() {
+            closeModal();
+            document.getElementById('adminLoginModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAdminLogin() {
+            document.getElementById('adminLoginModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (document.getElementById('adminPassword').value === '398908') {
+                closeAdminLogin();
+                openAdminPanel();
+            } else {
+                document.getElementById('adminLoginAlert').innerHTML = '<div class="admin-login-alert error">Şifre yanlış</div>';
+            }
+        });
+
+        function openAdminPanel() {
+            document.getElementById('adminPanelModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            loadAdminAppointments();
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminPanelModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function loadAdminAppointments() {
+            const appointments = getAppointments().sort((a, b) => new Date(b.date + 'T' + b.time) - new Date(a.date + 'T' + a.time));
+            document.getElementById('totalAppointmentsCount').textContent = appointments.length + ' randevu';
+            
+            const serviceSelect = document.getElementById('adminFilterService');
+            serviceSelect.innerHTML = '<option value="">Tüm Hizmetler</option>';
+            Object.keys(CONFIG.SERVICES).forEach(key => {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = CONFIG.SERVICES[key];
+                serviceSelect.appendChild(option);
+            });
+            
+            renderAdminTable(appointments);
+        }
+
+        function renderAdminTable(appointments) {
+            const tbody = document.getElementById('adminAppointmentsTable');
+            const noData = document.getElementById('adminNoData');
+            if (appointments.length === 0) { tbody.innerHTML = ''; noData.style.display = 'block'; return; }
+            noData.style.display = 'none';
+            tbody.innerHTML = appointments.map(a => 
+                '<tr><td>' + formatDateTime(a.date, a.time) + '</td><td>' + a.firstName + ' ' + a.lastName + 
+                '</td><td>' + a.phone + '</td><td>' + (CONFIG.SERVICES[a.service] || a.service) + 
+                '</td><td>' + (a.notes || '-') + '</td><td><button class="btn-admin-action btn-delete" onclick="deleteAppointment(' + a.id + ')">Sil</button></td></tr>'
+            ).join('');
+        }
+
+        function deleteAppointment(id) {
+            if (confirm('Silinsin mi?')) {
+                saveAppointments(getAppointments().filter(a => a.id !== id));
+                loadAdminAppointments();
+            }
+        }
+
+        function filterAdminAppointments() {
+            let appointments = getAppointments();
+            const dateFilter = document.getElementById('adminFilterDate').value;
+            const serviceFilter = document.getElementById('adminFilterService').value;
+            if (dateFilter) appointments = appointments.filter(a => a.date === dateFilter);
+            if (serviceFilter) appointments = appointments.filter(a => a.service === serviceFilter);
+            renderAdminTable(appointments.sort((a, b) => new Date(b.date + 'T' + b.time) - new Date(a.date + 'T' + a.time)));
+        }
+
+        function clearAdminFilters() {
+            document.getElementById('adminFilterDate').value = '';
+            document.getElementById('adminFilterService').value = '';
+            loadAdminAppointments();
+        }
+
+        // Header scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // Initialize
+        updateStatusDisplay();
+    </script>
+</body>
+</html>
