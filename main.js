@@ -12,7 +12,7 @@ const CONFIG = {
         weekday: { open: 10, close: 20 },
         sunday: { open: 13, close: 20 }
     },
-    SLIDER_INTERVAL: 6000
+    SLIDER_INTERVAL: 3000
 };
 
 // ============================================

@@ -458,6 +458,90 @@
             50% { opacity: 1; height: 50px; }
         }
 
+        /* ========== HERO SLIDER ========== */
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            animation: slideFade 12s infinite;
+        }
+
+        .hero-slide:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .hero-slide:nth-child(2) {
+            animation-delay: 6s;
+        }
+
+        @keyframes slideFade {
+            0% { opacity: 0; }
+            5% { opacity: 1; }
+            50% { opacity: 1; }
+            55% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .hero-slide .hero-bg img {
+            transform: scale(1.1);
+            transition: transform 8s ease-out;
+        }
+
+        .hero-slide:nth-child(1) .hero-bg img {
+            animation: heroZoom1 12s infinite;
+        }
+
+        .hero-slide:nth-child(2) .hero-bg img {
+            animation: heroZoom2 12s infinite;
+        }
+
+        @keyframes heroZoom1 {
+            0% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        @keyframes heroZoom2 {
+            0% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 10;
+        }
+
+        .hero-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .hero-dot:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-dot.active {
+            background: var(--accent-gold);
+            transform: scale(1.2);
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -472,25 +556,24 @@
         /* ========== SERVICES SECTION ========== */
         .services {
             padding: 6rem 0;
-            background: linear-gradient(180deg, #141618 0%, #1a1c20 50%, #141618 100%);
-            background-size: 100% 200%;
-            animation: sectionFlow 8s ease infinite;
+            background: linear-gradient(180deg, rgba(20, 22, 24, 0.95) 0%, rgba(26, 28, 32, 0.95) 50%, rgba(20, 22, 24, 0.95) 100%),
+                        url('unnamed.webp');
+            background-size: cover;
+            background-position: center;
             position: relative;
-        }
-
-        @keyframes sectionFlow {
-            0%, 100% { background-position: 0% 0%; }
-            50% { background-position: 0% 100%; }
         }
 
         .services::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 10, 12, 0.3) 0%, rgba(10, 10, 12, 0.2) 50%, rgba(10, 10, 12, 0.3) 100%);
+            z-index: 0;
+        }
+
+        .services .container {
+            position: relative;
+            z-index: 1;
         }
 
         .section-header {
@@ -1443,12 +1526,23 @@
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO SLIDER -->
     <section class="hero">
-        <div class="hero-bg">
-            <img src="indir.png" alt="Arya Terzi Kuru Temizleme" onerror="this.style.display='none'">
-            <div class="hero-overlay"></div>
-            <div class="hero-noise"></div>
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="hero-bg">
+                    <img src="indir.png" alt="Arya Terzi Kuru Temizleme">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-noise"></div>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-bg">
+                    <img src="indir.png1.png" alt="Arya Terzi Kuru Temizleme">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-noise"></div>
+                </div>
+            </div>
         </div>
         <div class="hero-content">
             <div class="hero-badge">
@@ -1486,9 +1580,9 @@
                 </a>
             </div>
         </div>
-        <div class="hero-scroll">
-            <span>Keşfet</span>
-            <div class="hero-scroll-line"></div>
+        <div class="hero-dots">
+            <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+            <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
         </div>
     </section>
 
