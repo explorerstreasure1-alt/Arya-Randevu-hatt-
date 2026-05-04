@@ -212,6 +212,7 @@
         .btn-whatsapp {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             padding: 0.625rem 1.25rem;
             background: linear-gradient(135deg, #25D366 0%, #20BD5A 100%);
@@ -231,6 +232,7 @@
         .btn-cta {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
             background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
@@ -1462,7 +1464,20 @@
 
             /* Organized action buttons - FIXED ALIGNMENT */
             .btn-whatsapp,
-            .btn-cta,
+            .btn-cta {
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 12px;
+                flex-shrink: 0;
+                position: relative;
+                line-height: 1;
+                overflow: hidden;
+            }
+
             .btn-admin,
             .mobile-menu-btn {
                 width: 44px;
@@ -1480,20 +1495,28 @@
             .btn-whatsapp,
             .btn-cta {
                 font-size: 0;
+                gap: 0;
             }
 
-            /* Icon alignment - ALL icons same size and centered */
+            /* Icon alignment - PERFECT CENTER */
             .btn-whatsapp svg,
-            .btn-cta svg,
+            .btn-cta svg {
+                width: 22px;
+                height: 22px;
+                margin: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: block;
+            }
+
             .btn-admin svg,
             .mobile-menu-btn svg {
                 width: 22px;
                 height: 22px;
-                margin: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
+                margin: auto;
+                display: block;
             }
 
             /* Smooth hover states for mobile */
