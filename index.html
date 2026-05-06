@@ -12,6 +12,115 @@
     <meta name="description"
         content="Görükle'de profesyonel kuru temizleme ve terzi hizmetleri. Pantolon tadilat, gömlek dikim, elbise, gelinlik ve özel dikim. 0555 182 3776">
 
+    <!-- SEO Meta Tags -->
+    <meta name="keywords"
+        content="terzi, kuru temizleme, görükle, nilüfer, bursa, pantolon tadilat, gömlek dikim, elbise, gelinlik, özel dikim">
+    <meta name="author" content="Arya Terzi">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://aryaterzi.com.tr/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:url" content="https://aryaterzi.com.tr/">
+    <meta property="og:title" content="Arya Terzi — Kuru Temizleme & Terzi Hizmetleri">
+    <meta property="og:description"
+        content="Görükle'de profesyonel kuru temizleme ve terzi hizmetleri. Online randevu, WhatsApp desteği.">
+    <meta property="og:image" content="https://aryaterzi.com.tr/og-image.jpg">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:site_name" content="Arya Terzi">
+    <meta property="business:contact_data:street_address" content="Görükle">
+    <meta property="business:contact_data:locality" content="Nilüfer">
+    <meta property="business:contact_data:region" content="Bursa">
+    <meta property="business:contact_data:country_name" content="Türkiye">
+    <meta property="business:contact_data:phone_number" content="+905551823776">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://aryaterzi.com.tr/">
+    <meta property="twitter:title" content="Arya Terzi — Kuru Temizleme & Terzi Hizmetleri">
+    <meta property="twitter:description"
+        content="Görükle'de profesyonel kuru temizleme ve terzi hizmetleri. Online randevu, WhatsApp desteği.">
+    <meta property="twitter:image" content="https://aryaterzi.com.tr/og-image.jpg">
+
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Arya Terzi",
+        "image": "https://aryaterzi.com.tr/logo.jpg",
+        "@id": "https://aryaterzi.com.tr",
+        "url": "https://aryaterzi.com.tr",
+        "telephone": "+905551823776",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Görükle",
+            "addressLocality": "Nilüfer",
+            "addressRegion": "Bursa",
+            "postalCode": "16000",
+            "addressCountry": "TR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.2317,
+            "longitude": 28.8794
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "09:00",
+                "closes": "20:00"
+            }
+        ],
+        "sameAs": [
+            "https://wa.me/905551823776"
+        ],
+        "description": "Görükle'de profesyonel kuru temizleme ve terzi hizmetleri. Pantolon tadilat, gömlek dikim, elbise, gelinlik ve özel dikim.",
+        "areaServed": "Görükle, Nilüfer, Bursa",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Terzi ve Kuru Temizleme Hizmetleri",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pantolon Tadilat"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Gömlek Dikim"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Elbise & Abiye"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Gelinlik Tasarım"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Kuru Temizleme"}}
+            ]
+        }
+    }
+    </script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            'send_page_view': true,
+            'anonymize_ip': true,
+            'allow_google_signals': false
+        });
+
+        // Custom events for appointment tracking
+        function trackAppointment(action, label) {
+            gtag('event', action, {
+                'event_category': 'appointment',
+                'event_label': label
+            });
+        }
+
+        function trackWhatsApp() {
+            gtag('event', 'click', {
+                'event_category': 'engagement',
+                'event_label': 'whatsapp_button'
+            });
+        }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -1220,6 +1329,44 @@
             color: var(--accent-gold);
         }
 
+        .appointment-status.pending {
+            background: rgba(201, 162, 39, 0.15);
+            color: var(--accent-gold);
+        }
+
+        .appointment-status.completed {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--success);
+        }
+
+        .appointment-status.cancelled {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--error);
+        }
+
+        .appointment-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .appointment-group-header {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .appointment-time {
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .appointment-customer {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
         .appointment-service {
             font-size: 0.9rem;
             color: var(--text-secondary);
@@ -2123,7 +2270,8 @@
                 <span class="mobile-logo-text">ARYA</span>
             </a>
             <div class="header-actions">
-                <a href="https://wa.me/905551823776" class="btn-whatsapp" target="_blank" rel="noopener">
+                <a href="https://wa.me/905551823776" class="btn-whatsapp" target="_blank" rel="noopener"
+                    onclick="trackWhatsApp()">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -2216,7 +2364,8 @@
                     </svg>
                     Randevu Al
                 </button>
-                <a href="https://wa.me/905551823776" class="btn-hero-secondary" target="_blank" rel="noopener">
+                <a href="https://wa.me/905551823776" class="btn-hero-secondary" target="_blank" rel="noopener"
+                    onclick="trackWhatsApp()">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -2292,7 +2441,8 @@
                     <div class="info-icon">📱</div>
                     <h3 class="info-title">İletişim</h3>
                     <p class="info-text">
-                        <a href="https://wa.me/905551823776" target="_blank" rel="noopener" class="highlight">WhatsApp:
+                        <a href="https://wa.me/905551823776" target="_blank" rel="noopener" class="highlight"
+                            onclick="trackWhatsApp()">WhatsApp:
                             0555 182 37 76</a><br>
                         <a href="mailto:aryaterzim@gmail.com" class="highlight">aryaterzim@gmail.com</a>
                     </p>
@@ -2441,9 +2591,8 @@
                         <h3 class="form-section-title">🔍 Randevularım</h3>
 
                         <div class="form-group">
-                            <label class="form-label" for="searchPhone">Telefon (Son 4 Hane)</label>
-                            <input type="tel" id="searchPhone" class="form-input" placeholder="1234" maxlength="4"
-                                pattern="\d{4}" inputmode="numeric">
+                            <label class="form-label" for="searchPhone">Telefon veya E-posta</label>
+                            <input type="tel" id="searchPhone" class="form-input" placeholder="1234 veya email@ornek.com" maxlength="50">
                         </div>
 
                         <button id="searchBtn" class="btn-submit" style="margin-bottom: 1rem;">
@@ -2482,7 +2631,8 @@
                                 </div>
                                 <div class="location-content">
                                     <div class="label">WhatsApp</div>
-                                    <div class="value"><a href="https://wa.me/905551823776" target="_blank">0555 182 37
+                                    <div class="value"><a href="https://wa.me/905551823776" target="_blank"
+                                            onclick="trackWhatsApp()">0555 182 37
                                             76</a></div>
                                 </div>
                             </div>
@@ -2620,10 +2770,202 @@
 
     <script>
         // ========== FIXED VERSION ==========
+        // No external dependencies - Uses IndexedDB with localStorage fallback
+
+        // Database Operations - Uses IndexedDB with localStorage fallback
+        let useIndexedDB = false;
+
+        async function dbGetAppointments() {
+            if (useIndexedDB && db) {
+                try {
+                    return await dbGetAll();
+                } catch (error) {
+                    console.warn('IndexedDB error, falling back to localStorage:', error);
+                    return getLocalAppointments();
+                }
+            }
+            return getLocalAppointments();
+        }
+
+        async function dbSaveAppointment(appointment) {
+            const finalData = {
+                firstName: appointment.firstName,
+                lastName: appointment.lastName,
+                phone: appointment.phone,
+                email: appointment.email,
+                service: appointment.service,
+                date: appointment.date,
+                time: appointment.time,
+                notes: appointment.notes,
+                createdAt: new Date().toISOString(),
+                status: appointment.status || 'pending'
+            };
+            
+            if (useIndexedDB && db) {
+                try {
+                    await dbAdd(finalData);
+                    return true;
+                } catch (error) {
+                    console.warn('IndexedDB error, saving to localStorage:', error);
+                    finalData.id = Date.now();
+                    saveLocalAppointment(finalData);
+                    return true;
+                }
+            }
+            finalData.id = Date.now();
+            saveLocalAppointment(finalData);
+            return true;
+        }
+
+        async function dbUpdateAppointmentStatus(id, status) {
+            if (useIndexedDB && db) {
+                try {
+                    return await dbUpdateStatus(id, status);
+                } catch (error) {
+                    console.warn('IndexedDB error, updating localStorage:', error);
+                    return updateLocalAppointmentStatus(id, status);
+                }
+            }
+            return updateLocalAppointmentStatus(id, status);
+        }
+
+        async function dbDeleteAppointment(id) {
+            if (useIndexedDB && db) {
+                try {
+                    return await dbRemove(id);
+                } catch (error) {
+                    console.warn('IndexedDB error, deleting from localStorage:', error);
+                    return deleteLocalAppointment(id);
+                }
+            }
+            return deleteLocalAppointment(id);
+        }
+
+        // IndexedDB Functions - Better than localStorage
+        const DB_NAME = 'AryaTerziDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'appointments';
+        let db = null;
+
+        async function initDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                
+                request.onerror = () => reject(request.error);
+                
+                request.onsuccess = () => {
+                    db = request.result;
+                    resolve(db);
+                };
+                
+                request.onupgradeneeded = (event) => {
+                    const database = event.target.result;
+                    if (!database.objectStoreNames.contains(STORE_NAME)) {
+                        const store = database.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                        store.createIndex('phone', 'phone', { unique: false });
+                        store.createIndex('email', 'email', { unique: false });
+                        store.createIndex('date', 'date', { unique: false });
+                        store.createIndex('status', 'status', { unique: false });
+                    }
+                };
+            });
+        }
+
+        async function dbGetAll() {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readonly');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.getAll();
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        async function dbAdd(appointment) {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.add(appointment);
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        async function dbUpdateStatus(id, status) {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                store.get(id).onsuccess = (e) => {
+                    const data = e.target.result;
+                    if (data) {
+                        data.status = status;
+                        data.updated_at = new Date().toISOString();
+                        store.put(data).onsuccess = () => resolve(true);
+                        store.onerror = () => reject(store.error);
+                    } else {
+                        resolve(false);
+                    }
+                };
+            });
+        }
+
+        async function dbRemove(id) {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                store.delete(id).onsuccess = () => resolve(true);
+                store.onerror = () => reject(store.error);
+            });
+        }
+
+        // Local Storage Fallback Functions
+        function getLocalAppointments() {
+            try {
+                return JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEY) || '[]');
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveLocalAppointments(appointments) {
+            try {
+                localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(appointments));
+            } catch (e) {
+                console.error('localStorage error:', e);
+            }
+        }
+
+        function saveLocalAppointment(appointment) {
+            const appointments = getLocalAppointments();
+            appointments.push(appointment);
+            saveLocalAppointments(appointments);
+        }
+
+        function updateLocalAppointmentStatus(id, status) {
+            const appointments = getLocalAppointments();
+            const index = appointments.findIndex(a => a.id == id);
+            if (index !== -1) {
+                appointments[index].status = status;
+                saveLocalAppointments(appointments);
+                return true;
+            }
+            return false;
+        }
+
+function deleteLocalAppointment(id) {
+            let appointments = getLocalAppointments();
+            appointments = appointments.filter(a => a.id != id);
+            saveLocalAppointments(appointments);
+            return true;
+        }
 
         // Config
         const CONFIG = {
-            STORAGE_KEY: 'arya_terzi_randevular_v7',
+            STORAGE_KEY: 'arya_terzi_randevular_v8',
             TIME_SLOTS: ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00'],
             SERVICES: {
                 'pantolon-tadilat': 'Pantolon Tadilatı', 'gomlek-tadilat': 'Gömlek Tadilatı', 'ceket-tadilat': 'Ceket/Takım Elbise',
@@ -2635,6 +2977,128 @@
                 'nakis-isleme': 'Nakış İşleme', 'danismanlik': 'Kumaş Danışmanlığı'
             }
         };
+
+        // IndexedDB Functions - Better than localStorage
+        const DB_NAME = 'AryaTerziDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'appointments';
+        let db = null;
+
+        async function initDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                
+                request.onerror = () => reject(request.error);
+                
+                request.onsuccess = () => {
+                    db = request.result;
+                    resolve(db);
+                };
+                
+                request.onupgradeneeded = (event) => {
+                    const database = event.target.result;
+                    if (!database.objectStoreNames.contains(STORE_NAME)) {
+                        const store = database.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                        store.createIndex('phone', 'phone', { unique: false });
+                        store.createIndex('email', 'email', { unique: false });
+                        store.createIndex('date', 'date', { unique: false });
+                        store.createIndex('status', 'status', { unique: false });
+                    }
+                };
+            });
+        }
+
+        async function dbGetAll() {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readonly');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.getAll();
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        async function dbAdd(appointment) {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.add(appointment);
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        async function dbUpdateStatus(id, status) {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                store.get(id).onsuccess = (e) => {
+                    const data = e.target.result;
+                    if (data) {
+                        data.status = status;
+                        data.updated_at = new Date().toISOString();
+                        store.put(data).onsuccess = () => resolve(true);
+                        store.onerror = () => reject(store.error);
+                    } else {
+                        resolve(false);
+                    }
+                };
+            });
+        }
+
+        async function dbRemove(id) {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                store.delete(id).onsuccess = () => resolve(true);
+                store.onerror = () => reject(store.error);
+            });
+        }
+
+        // Local Storage Fallback Functions
+        function getLocalAppointments() {
+            try {
+                return JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEY) || '[]');
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveLocalAppointments(appointments) {
+            try {
+                localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(appointments));
+            } catch (e) {
+                console.error('localStorage error:', e);
+            }
+        }
+
+        function saveLocalAppointment(appointment) {
+            const appointments = getLocalAppointments();
+            appointments.push(appointment);
+            saveLocalAppointments(appointments);
+        }
+
+        function updateLocalAppointmentStatus(id, status) {
+            const appointments = getLocalAppointments();
+            const index = appointments.findIndex(a => a.id == id);
+            if (index !== -1) {
+                appointments[index].status = status;
+                saveLocalAppointments(appointments);
+                return true;
+            }
+            return false;
+        }
+
+function deleteLocalAppointment(id) {
+            let appointments = getLocalAppointments();
+            appointments = appointments.filter(a => a.id != id);
+            saveLocalAppointments(appointments);
+            return true;
+        }
 
         // XSS Protection: HTML escaping
         function escapeHtml(text) {
@@ -2649,25 +3113,173 @@
             return phone.replace(/\D/g, '').slice(0, 4);
         }
 
-        // Storage functions with error handling
-        function getAppointments() {
+        // Format functions
+        function formatDate(dateStr) {
+            const date = new Date(dateStr + 'T00:00:00');
+            return date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
+        function formatDateTime(dateStr, time) {
+            return formatDate(dateStr) + ' - ' + time;
+        }
+
+        function getToday() {
+            const now = new Date();
+            return now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+        }
+
+        // Get appointments function
+        async function getAppointments() {
+            return await dbGetAppointments();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async function () {
+            await initDB().then(() => useIndexedDB = true).catch(() => useIndexedDB = false);
+            initSlider();
+        });
+        const CONFIG = {
+            STORAGE_KEY: 'arya_terzi_randevular_v8',
+            TIME_SLOTS: ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00'],
+            SERVICES: {
+                'pantolon-tadilat': 'Pantolon Tadilatı', 'gomlek-tadilat': 'Gömlek Tadilatı', 'ceket-tadilat': 'Ceket/Takım Elbise',
+                'elbise-tadilat': 'Elbise Tadilatı', 'fermuar-degisim': 'Fermuar Değişimi', 'astar-degisim': 'Astar Değişimi',
+                'dugme-kayip': 'Düğme Dikimi', 'yirtik-tamiri': 'Yırtık Tamiri', 'ozel-dikim': 'Özel Dikim',
+                'gelinlik-mod': 'Gelinlik Modifikasyonu', 'kuru-temizleme': 'Kuru Temizleme', 'yikama': 'Yıkama',
+                'utu': 'Ütü', 'yikama-utu': 'Yıkama + Ütü', 'leke-cikarma': 'Leke Çıkarma', 'perde-yorgan': 'Perde/Yorgan',
+                'gelinlik-temizleme': 'Gelinlik Temizleme', 'deri-suet': 'Deri/Süet Temizleme', 'kumas-boyama': 'Kumaş Boyama',
+                'nakis-isleme': 'Nakış İşleme', 'danismanlik': 'Kumaş Danışmanlığı'
+            }
+        };
+
+        // IndexedDB Functions - Better than localStorage
+        const DB_NAME = 'AryaTerziDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'appointments';
+        let db = null;
+
+        async function initDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                
+                request.onerror = () => reject(request.error);
+                
+                request.onsuccess = () => {
+                    db = request.result;
+                    resolve(db);
+                };
+                
+                request.onupgradeneeded = (event) => {
+                    const database = event.target.result;
+                    if (!database.objectStoreNames.contains(STORE_NAME)) {
+                        const store = database.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                        store.createIndex('phone', 'phone', { unique: false });
+                        store.createIndex('email', 'email', { unique: false });
+                        store.createIndex('date', 'date', { unique: false });
+                        store.createIndex('status', 'status', { unique: false });
+                    }
+                };
+            });
+        }
+
+        async function dbGetAll() {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readonly');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.getAll();
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        async function dbAdd(appointment) {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.add(appointment);
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        async function dbUpdateStatus(id, status) {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                store.get(id).onsuccess = (e) => {
+                    const data = e.target.result;
+                    if (data) {
+                        data.status = status;
+                        data.updated_at = new Date().toISOString();
+                        store.put(data).onsuccess = () => resolve(true);
+                        store.onerror = () => reject(store.error);
+                    } else {
+                        resolve(false);
+                    }
+                };
+            });
+        }
+
+        async function dbRemove(id) {
+            if (!db) await initDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                store.delete(id).onsuccess = () => resolve(true);
+                store.onerror = () => reject(store.error);
+            });
+        }
+
+        // Local Storage Fallback Functions
+        function getLocalAppointments() {
             try {
-                const data = localStorage.getItem(CONFIG.STORAGE_KEY);
-                return data ? JSON.parse(data) : [];
+                return JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEY) || '[]');
             } catch (e) {
-                console.error('Storage read error:', e);
                 return [];
             }
         }
 
-        function saveAppointments(data) {
+        function saveLocalAppointments(appointments) {
             try {
-                localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
-                return true;
+                localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(appointments));
             } catch (e) {
-                console.error('Storage write error:', e);
-                return false;
+                console.error('localStorage error:', e);
             }
+        }
+
+        function saveLocalAppointment(appointment) {
+            const appointments = getLocalAppointments();
+            appointments.push(appointment);
+            saveLocalAppointments(appointments);
+        }
+
+        function updateLocalAppointmentStatus(id, status) {
+            const appointments = getLocalAppointments();
+            const index = appointments.findIndex(a => a.id == id);
+            if (index !== -1) {
+                appointments[index].status = status;
+                saveLocalAppointments(appointments);
+                return true;
+            }
+            return false;
+        }
+
+function deleteLocalAppointment(id) {
+            let appointments = getLocalAppointments();
+            appointments = appointments.filter(a => a.id != id);
+            saveLocalAppointments(appointments);
+            return true;
+        }
+
+        // XSS Protection: HTML escaping
+        function escapeHtml(text) {
+            if (text === null || text === undefined) return '';
+            const div = document.createElement('div');
+            div.textContent = String(text);
+            return div.innerHTML;
         }
 
         // Format functions
@@ -2778,8 +3390,8 @@
             menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
         }
 
-        // Form submit with XSS protection
-        document.getElementById('appointmentForm').addEventListener('submit', function (e) {
+        // Form submit with XSS protection - ASYNC with Supabase
+        document.getElementById('appointmentForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const firstName = document.getElementById('firstName').value.trim();
@@ -2801,14 +3413,15 @@
                 return;
             }
 
-            const appointments = getAppointments();
-            const conflict = appointments.some(a => a.date === date && a.time === time);
+            // Check for conflicts (async)
+            const appointments = await getAppointments();
+            const conflict = appointments.some(a => a.appointment_date === date && a.appointment_time === time);
             if (conflict) {
                 document.getElementById('formAlert').innerHTML = '<div class="form-alert error">Bu saat dolu</div>';
                 return;
             }
 
-            appointments.push({
+            const appointmentData = {
                 id: Date.now(),
                 firstName: escapeHtml(firstName),
                 lastName: escapeHtml(lastName),
@@ -2820,9 +3433,15 @@
                 notes: escapeHtml(notes),
                 createdAt: new Date().toISOString(),
                 status: 'pending'
-            });
+            };
 
-            saveAppointments(appointments);
+            // Save to Supabase or localStorage
+            await dbSaveAppointment(appointmentData);
+
+            // Google Analytics tracking
+            trackAppointment('create', service);
+
+            // Success message
             document.getElementById('formAlert').innerHTML = '<div class="form-alert success">Randevunuz oluşturuldu!</div>';
             document.getElementById('appointmentForm').reset();
             document.getElementById('time').innerHTML = '<option value="">Önce tarih seçin</option>';
@@ -2832,33 +3451,60 @@
             }, 3000);
         });
 
-        // Search with XSS protection
-        document.getElementById('searchBtn').addEventListener('click', function () {
+        // Search with XSS protection - ASYNC - Now supports phone OR email
+        document.getElementById('searchBtn').addEventListener('click', async function () {
             const phoneInput = document.getElementById('searchPhone');
-            const phone = sanitizePhone(phoneInput.value);
+            const searchVal = phoneInput.value.trim();
 
-            if (!phone || phone.length !== 4) {
-                document.getElementById('appointmentsList').innerHTML = '<div class="no-appointments">Lütfen son 4 haneli telefon numarası girin</div>';
+            if (!searchVal || searchVal.length < 3) {
+                document.getElementById('appointmentsList').innerHTML = '<div class="no-appointments">En az 3 karakter girin</div>';
                 return;
             }
 
-            const found = getAppointments().filter(a => a.phone.includes(phone));
+            const appointments = await getAppointments();
+            const found = appointments.filter(a => 
+                (a.phone && a.phone.includes(searchVal)) || 
+                (a.email && a.email.toLowerCase().includes(searchVal.toLowerCase()))
+            );
             const listEl = document.getElementById('appointmentsList');
 
             if (found.length === 0) {
                 listEl.innerHTML = '<div class="no-appointments">Randevu bulunamadı</div>';
             } else {
-                // FIX: Use escapeHtml for all user-generated content
-                listEl.innerHTML = found.map(a =>
-                    '<div class="appointment-item">' +
-                    '<div class="appointment-header">' +
-                    '<span class="appointment-date">' + escapeHtml(formatDateTime(a.date, a.time)) + '</span>' +
-                    '<span class="appointment-status">' + escapeHtml(CONFIG.SERVICES[a.service] || a.service) + '</span>' +
-                    '</div>' +
-                    '<div class="appointment-service">' + escapeHtml(a.firstName) + ' ' + escapeHtml(a.lastName) + '</div>' +
-                    (a.notes ? '<div class="appointment-notes">Not: ' + escapeHtml(a.notes) + '</div>' : '') +
-                    '</div>'
-                ).join('');
+                // Group by date
+                const grouped = found.reduce((acc, a) => {
+                    const dateKey = a.date || a.appointment_date;
+                    if (!acc[dateKey]) acc[dateKey] = [];
+                    acc[dateKey].push(a);
+                    return acc;
+                }, {});
+
+                const sortedDates = Object.keys(grouped).sort((a, b) => new Date(b) - new Date(a));
+                
+                listEl.innerHTML = sortedDates.map(dateKey => {
+                    const items = grouped[dateKey].sort((a, b) => {
+                        const timeA = a.time || a.appointment_time || '00:00';
+                        const timeB = b.time || b.appointment_time || '00:00';
+                        return timeB.localeCompare(timeA);
+                    });
+                    
+                    return '<div class="appointment-group">' +
+                        '<div class="appointment-group-header">' + formatDate(dateKey) + '</div>' +
+                        items.map(a => {
+                            const statusClass = a.status === 'completed' ? 'completed' : (a.status === 'cancelled' ? 'cancelled' : 'pending');
+                            const statusText = a.status === 'completed' ? 'Tamamlandı' : (a.status === 'cancelled' ? 'İptal' : 'Bekliyor');
+                            return '<div class="appointment-item">' +
+                                '<div class="appointment-header">' +
+                                '<span class="appointment-time">' + escapeHtml(a.time || a.appointment_time) + '</span>' +
+                                '<span class="appointment-status ' + statusClass + '">' + statusText + '</span>' +
+                                '</div>' +
+                                '<div class="appointment-service">' + escapeHtml(CONFIG.SERVICES[a.service] || a.service) + '</div>' +
+                                '<div class="appointment-customer">' + escapeHtml(a.firstName || a.first_name) + ' ' + escapeHtml(a.lastName || a.last_name) + '</div>' +
+                                (a.notes ? '<div class="appointment-notes">Not: ' + escapeHtml(a.notes) + '</div>' : '') +
+                                '</div>';
+                        }).join('') +
+                    '</div>';
+                }).join('');
             }
         });
 
@@ -2901,10 +3547,11 @@
             setTimeout(() => hintDiv.classList.remove('show'), 5000);
         }
 
-        function openAdminPanel() {
+        async function openAdminPanel() {
+            closeAdminLogin();
             document.getElementById('adminPanelModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-            loadAdminAppointments();
+            await loadAdminAppointments();
         }
 
         function closeAdminPanel() {
@@ -2912,13 +3559,14 @@
             document.body.style.overflow = '';
         }
 
-        function refreshAdminPanel() {
-            loadAdminAppointments();
+        async function refreshAdminPanel() {
+            await loadAdminAppointments();
         }
 
-        function loadAdminAppointments() {
-            const appointments = getAppointments().sort((a, b) =>
-                new Date(b.date + 'T' + b.time) - new Date(a.date + 'T' + a.time)
+        async function loadAdminAppointments() {
+            const appointments = (await getAppointments()).sort((a, b) =>
+                new Date((b.appointment_date || b.date) + 'T' + (b.appointment_time || b.time)) -
+                new Date((a.appointment_date || a.date) + 'T' + (a.appointment_time || a.time))
             );
             document.getElementById('totalAppointmentsCount').textContent = appointments.length + ' randevu';
 
@@ -2943,41 +3591,47 @@
                 return;
             }
             noData.style.display = 'none';
-            // FIX: Use escapeHtml for all user content
+            // FIX: Use escapeHtml for all user content - Support both Supabase and localStorage formats
             tbody.innerHTML = appointments.map(a =>
                 '<tr>' +
-                '<td>' + escapeHtml(formatDateTime(a.date, a.time)) + '</td>' +
-                '<td>' + escapeHtml(a.firstName) + ' ' + escapeHtml(a.lastName) + '</td>' +
+                '<td>' + escapeHtml(formatDateTime(a.appointment_date || a.date, a.appointment_time || a.time)) + '</td>' +
+                '<td>' + escapeHtml(a.first_name || a.firstName) + ' ' + escapeHtml(a.last_name || a.lastName) + '</td>' +
                 '<td>*** *** ' + escapeHtml(a.phone) + '</td>' +
                 '<td>' + escapeHtml(CONFIG.SERVICES[a.service] || a.service) + '</td>' +
                 '<td>' + (a.notes ? escapeHtml(a.notes) : '-') + '</td>' +
-                '<td><button class="btn-admin-action btn-delete" onclick="deleteAppointment(' + a.id + ')">Sil</button></td>' +
+                '<td><button class="btn-admin-action btn-delete" onclick="deleteAppointmentHandler(' + a.id + ')">Sil</button></td>' +
                 '</tr>'
             ).join('');
         }
 
-        function deleteAppointment(id) {
+        async function deleteAppointmentHandler(id) {
             if (confirm('Silinsin mi?')) {
-                saveAppointments(getAppointments().filter(a => a.id !== id));
+                await dbDeleteAppointment(id);
                 loadAdminAppointments();
             }
         }
 
-        function filterAdminAppointments() {
-            let appointments = getAppointments();
+        // Keep old function name for backwards compatibility
+        async function deleteAppointment(id) {
+            return deleteAppointmentHandler(id);
+        }
+
+        async function filterAdminAppointments() {
+            let appointments = await getAppointments();
             const dateFilter = document.getElementById('adminFilterDate').value;
             const serviceFilter = document.getElementById('adminFilterService').value;
-            if (dateFilter) appointments = appointments.filter(a => a.date === dateFilter);
+            if (dateFilter) appointments = appointments.filter(a => (a.appointment_date || a.date) === dateFilter);
             if (serviceFilter) appointments = appointments.filter(a => a.service === serviceFilter);
             renderAdminTable(appointments.sort((a, b) =>
-                new Date(b.date + 'T' + b.time) - new Date(a.date + 'T' + a.time)
+                new Date((b.appointment_date || b.date) + 'T' + (b.appointment_time || b.time)) -
+                new Date((a.appointment_date || a.date) + 'T' + (a.appointment_time || a.time))
             ));
         }
 
-        function clearAdminFilters() {
+        async function clearAdminFilters() {
             document.getElementById('adminFilterDate').value = '';
             document.getElementById('adminFilterService').value = '';
-            loadAdminAppointments();
+            await loadAdminAppointments();
         }
 
         // Header scroll
